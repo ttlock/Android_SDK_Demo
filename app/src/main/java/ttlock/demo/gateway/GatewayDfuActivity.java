@@ -89,6 +89,7 @@ public class GatewayDfuActivity extends BaseActivity {
             @Override
             public void onDfuSuccess(String deviceAddress) {
                 makeToast("dfu completed");
+                startTargetActivity(UserGatewayActivity.class);
             }
 
             @Override
@@ -111,7 +112,7 @@ public class GatewayDfuActivity extends BaseActivity {
 
     private void check() {
         ApiService apiService = RetrofitAPIManager.provideClientApi();
-        Call<String> call = apiService.gatewayUpgradeCheck(ApiService.CLIENT_ID, MyApplication.getmInstance().getAccountInfo().getAccess_token(), 311, System.currentTimeMillis());
+        Call<String> call = apiService.gatewayUpgradeCheck(ApiService.CLIENT_ID, MyApplication.getmInstance().getAccountInfo().getAccess_token(), gatewayObj.getGatewayId(), System.currentTimeMillis());
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, retrofit2.Response<String> response) {

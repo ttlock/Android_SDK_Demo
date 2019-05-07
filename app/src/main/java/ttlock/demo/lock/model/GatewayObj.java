@@ -1,6 +1,8 @@
-package ttlock.demo.model;
+package ttlock.demo.lock.model;
 
 import java.io.Serializable;
+
+import ttlock.demo.model.ServerError;
 
 /**
  * Created by TTLock on 2019/5/5.
