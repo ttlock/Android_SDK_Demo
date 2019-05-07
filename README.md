@@ -31,8 +31,9 @@ implementation 'com.tongtonglock:ttlock:3.0.0'
 
 #### 1)确保蓝牙开启
 #### 2)SDK初始化
+#####锁操作：
 ```
-GatewayClient.getDefault().prepareBTService(getApplicationContext());
+TTLockClient.getDefault().prepareBTService(getApplicationContext());
 ```
 
 #### 3)开始调用接口 比如扫描周围蓝牙智能锁:
