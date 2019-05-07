@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_wifi_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:background="@android:color/white">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/words_wifi_name"
+            android:textColor="@color/textColor3"
+            android:gravity="center_vertical"
+            android:textSize="16dp"/>
+        <TextView
+            android:id="@+id/wifi_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/textColor6"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:drawableRight="@mipmap/icon_right"
+            android:drawablePadding="5dp"
+            android:textSize="16dp"/>
+    </RelativeLayout>
+    <View style="@style/divider_line" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:background="@android:color/white">
+        <TextView
+            android:id="@+id/tv_wifi_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/words_wifi_pwd"
+            android:textColor="@color/textColor3"
+            android:gravity="center_vertical"
+            android:textSize="16dp"
+            android:layout_marginRight="5dp"/>
+        <EditText
+            android:layout_toRightOf="@id/tv_wifi_pwd"
+            android:id="@+id/wifi_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/textColor6"
+            android:gravity="center_vertical|end"
+            android:background="@null"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:layout_alignParentRight="true"
+            android:textSize="16dp"/>
+    </RelativeLayout>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="8dp" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:background="@android:color/white">
+        <TextView
+            android:id="@+id/tv_gateway_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/words_gateway_name"
+            android:textColor="@color/textColor3"
+            android:gravity="center_vertical"
+            android:textSize="16dp"
+            android:layout_marginRight="5dp"/>
+        <EditText
+            android:layout_toRightOf="@id/tv_gateway_name"
+            android:id="@+id/gateway_name"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/textColor6"
+            android:gravity="center_vertical|end"
+            android:background="@null"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_alignParentRight="true"
+            android:textSize="16dp"/>
+    </RelativeLayout>
+    <View style="@style/divider_line" />
+
+    <Button
+        android:id="@+id/btn_init_gateway"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/add"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"/>
+
+</LinearLayout>
+</layout>

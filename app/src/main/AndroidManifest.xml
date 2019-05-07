@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ttlock.demo">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".AuthActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity android:name=".lock.LockApiActivity" />
+        <activity android:name=".lock.ScanLockActivity" />
+        <activity android:name=".firmwareupdate.FirmwareUpdateActivity" />
+        <activity android:name=".lock.UnlockActivity" />
+        <activity android:name=".lock.EnableDisableSomeLockFuncionActivity" />
+        <activity android:name=".lock.PassageModeActivity" />
+        <activity android:name=".lock.LockTimeActivity" />
+        <activity android:name=".passcode.PasscodeActivity" />
+        <activity android:name=".passcode.CreateCustomPasscodeActivity" />
+        <activity android:name=".passcode.ModifyPasscodeActivity" />
+        <activity android:name=".passcode.AdminPasscodeActivity" />
+        <activity android:name=".fingerprint.FingerprintActivity" />
+        <activity android:name=".iccard.ICCardActivity" />
+        <activity android:name=".gateway.GatewayActivity" />
+        <activity android:name=".lock.UserLockActivity" />
+        <activity android:name=".fingerprint.MyFingerprintListActivity" />
+        <activity android:name=".fingerprint.FingerprintModifyActivity" />
+        <activity android:name=".iccard.MyICCardListActivity" />
+        <activity android:name=".iccard.ICCardModifyActivity" />
+        <activity android:name=".gateway.InitGatewayActivity" />
+        <activity android:name=".gateway.GatewayDfuActivity" />
+        <activity android:name=".gateway.UserGatewayActivity" />
+        <activity android:name=".IndexActivity"></activity>
+    </application>
+
+</manifest>

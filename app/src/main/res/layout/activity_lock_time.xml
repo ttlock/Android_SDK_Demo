@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="ttlock.demo.lock.LockTimeActivity">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:textAllCaps="false"
+            android:text="@string/get_time"
+            android:id="@+id/btn_get_time"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:id="@+id/tv_lock_time"
+            android:text="@string/lock_time_is"
+            app:layout_constraintLeft_toRightOf="@id/btn_get_time"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="16dp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:id="@+id/btn_set_lock_time"
+            app:layout_constraintTop_toBottomOf="@id/btn_get_time"
+            android:text="@string/set_lock_time"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>

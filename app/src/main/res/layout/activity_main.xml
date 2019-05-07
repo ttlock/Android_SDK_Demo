@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="ttlock.demo.MainActivity">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_lock"
+            android:textAllCaps="false"
+            android:text="@string/lock_about"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_passcode"
+            android:textAllCaps="false"
+            android:text="@string/passcode_about"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_fingerprint"
+            android:textAllCaps="false"
+            android:text="@string/fingerprint_about"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_ic"
+            android:textAllCaps="false"
+            android:text="@string/ic_card_about"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:textAllCaps="false"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_firmware"
+            android:text="@string/upgrade_about"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:textAllCaps="false"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_gateway"
+            android:text="@string/gateway_about"/>
+    </LinearLayout>
+</layout>

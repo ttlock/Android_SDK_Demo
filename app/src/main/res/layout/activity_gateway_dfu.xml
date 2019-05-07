@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:id="@+id/version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/words_version_info"
+            android:layout_gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:id="@+id/status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/words_status"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:layout_marginTop="20dp"
+            android:id="@+id/btn_upgrade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/upgrade"
+            android:textAllCaps="false"
+            android:layout_gravity="center_horizontal"/>
+        <LinearLayout
+            android:id="@+id/ll_retry"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:visibility="gone">
+            <Button
+                android:id="@+id/btn_retry_by_net"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/retry_by_net"
+                android:textAllCaps="false"
+                android:layout_gravity="center_horizontal"/>
+            <Button
+                android:layout_marginLeft="30dp"
+                android:id="@+id/btn_retry_by_ble"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/retry_by_ble"
+                android:textAllCaps="false"
+                android:layout_gravity="center_horizontal"/>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

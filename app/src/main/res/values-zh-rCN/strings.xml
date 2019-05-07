@@ -1,0 +1,104 @@
+<resources>
+    <string name="app_name">TTLockSdkDemo</string>
+    <string name="lock_about">锁相关操作</string>
+    <string name="gateway_about">网关</string>
+    <string name="upgrade_about">锁升级相关</string>
+    <string name="passcode_about">密码相关</string>
+    <string name="fingerprint_about">指纹相关</string>
+    <string name="ic_card_about">IC 卡相关</string>
+    <string name="passageModeEnter">设置常开模式</string>
+    <string name="lockTimeAbout">锁时间相关</string>
+    <string name="get_time">获取锁时间</string>
+    <string name="lock_time_is">当前锁内部时间</string>
+    <string name="set_lock_time">设置锁时间</string>
+    <string name="get_log">获取锁操作日志</string>
+    <string name="get_battery">读取锁电量</string>
+    <string name="lock_system_info">获取锁系统信息</string>
+
+    <string name="set_custom_passcode">设置自定义密码</string>
+    <string name="input_custom_passcode">输入自定义密码</string>
+    <string name="start_date">生效时间:</string>
+    <string name="end_date">过期时间:</string>
+    <string name="get_lock_status">查询锁状态</string>
+    <string name="set_auto_locking_time">设置自动闭锁时间</string>
+    <string name="modify_passcode">修改密码</string>
+    <string name="delete_passcode">删除密码</string>
+    <string name="reset_passcode">重置密码</string>
+    <string name="get_valid_passcodes">获取锁中全部密码</string>
+    <string name="get_pwdinfo">获取密码校验信息</string>
+    <string name="modify_date">只修改有效期</string>
+    <string name="modify_passcode_only">只修改密码</string>
+    <string name="modify_passcode_and_date">密码和有效期同时修改</string>
+    <string name="input_new_passcode">请输入新密码</string>
+    <string name="admin_passcode">管理员密码</string>
+    <string name="get_admin_passcode">获取锁管理员密码</string>
+    <string name="modify_admin_passcode">修改管理员密码</string>
+
+    <string name="add_permanent_ic_card">添加永久有效IC卡</string>
+    <string name="add_period_id_card">添加限时IC卡</string>
+    <string name="modify_period">修改有效期</string>
+    <string name="delete_ic_card">删除IC卡</string>
+    <string name="get_all_ic_card">获取锁中所有有效IC卡信息</string>
+    <string name="clear_all_ic_card">清空锁中IC卡</string>
+    <string name="add_permanent_fingerprint">添加永久有效指纹</string>
+    <string name="add_period_fingerprint">添加限时指纹</string>
+    <string name="delete_fingerprint">删除指纹</string>
+    <string name="get_all_fingerprint">获取锁中所有有效指纹信息</string>
+    <string name="clear_all_fingerprint">清空锁中指纹</string>
+    <string name="unlock">开锁</string>
+    <string name="lock">闭锁</string>
+    <string name="rolling_gate_up">卷闸门升起</string>
+    <string name="rolling_gate_down">卷闸门下降</string>
+    <string name="rolling_gate_pause">卷闸门停止</string>
+    <string name="rolling_gate_lock">卷闸门锁定</string>
+    <string name="initLock">初始化锁</string>
+    <string name="reset_lock">重置锁</string>
+    <string name="config_feature">开启/关闭特殊功能</string>
+    <string name="reset_key">重置电子钥匙</string>
+    <string name="lock_mute_mode">锁静音模式</string>
+    <string name="remote_unlock">远程开门功能</string>
+    <string name="passcode_visible">输入密码是否明文模式</string>
+    <string name="passage_mode">常开模式</string>
+    <string name="query">查询</string>
+    <!--fingerprint-->
+    <string name="my_fingerprint_list">我的指纹列表</string>
+    <string name="my_card_list">我的IC卡列表</string>
+
+    <!-- firmware update -->
+    <string name="check_version">检查更新</string>
+    <string name="recheck_version">再次检测更新</string>
+    <string name="words_status">状态</string>
+    <string name="words_version_info">版本信息</string>
+    <string name="retry">重试</string>
+
+    <!-- auth -->
+    <string name="account">账号:</string>
+    <string name="password">密码:</string>
+    <string name="enter_account">输入账号</string>
+    <string name="enter_password">输入密码</string>
+    <string name="authorize">授权</string>
+
+
+    <string name="get_passage_mode">获取常开模式数据</string>
+    <string name="set_passage_mode">设置常开模式</string>
+    <string name="delete_passage_mode">删除单个常开模式设置</string>
+    <string name="clear_passage_mode">清空常开模式设置</string>
+
+    <!-- gateway -->
+    <string name="initGateway">初始化网关</string>
+    <string name="gateway_operate_info">将网关重新通电，指示灯交替闪烁时点击扫描</string>
+    <string name="scan">扫描</string>
+    <string name="words_wifi_name">WiFi名称</string>
+    <string name="words_wifi_pwd">WiFi密码</string>
+    <string name="words_gateway_name">网关名称</string>
+    <string name="add">添加</string>
+    <string name="gateway_out_of_time">连接超时，已退出添加模式</string>
+    <string name="no_updates">已是最新版本</string>
+    <string name="new_version_found">有新版本</string>
+    <string name="unknown_lock_version">锁版本未知</string>
+    <string name="upgrade">升级</string>
+    <string name="retry_by_net">通过网络重试</string>
+    <string name="retry_by_ble">通过蓝牙重试</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="select_net">选择网络</string>
+</resources>

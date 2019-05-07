@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="ttlock.demo.passcode.AdminPasscodeActivity">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_end_date"
+            android:id="@+id/btn_get"
+            android:textAllCaps="false"
+            android:text="@string/get_admin_passcode"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:id="@+id/tv_admin_passcode"
+            app:layout_constraintLeft_toRightOf="@id/btn_get"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_get"
+            android:id="@+id/btn_modify"
+            android:textAllCaps="false"
+            android:text="@string/modify_admin_passcode"/>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            app:layout_constraintTop_toTopOf="@id/btn_modify"
+            android:hint="@string/input_new_passcode"
+            app:layout_constraintLeft_toRightOf="@id/btn_modify"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/edt_new_passcode"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>

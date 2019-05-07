@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="ttlock.demo.iccard.ICCardActivity">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_my_list"
+            android:textAllCaps="false"
+            android:text="@string/my_card_list"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_add_permanent"
+            android:textAllCaps="false"
+            android:text="@string/add_permanent_ic_card"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_add_timed"
+            android:textAllCaps="false"
+            android:text="@string/add_period_id_card"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_get_all_cards"
+            android:textAllCaps="false"
+            android:text="@string/get_all_ic_card"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_clear_card"
+            android:textAllCaps="false"
+            android:text="@string/clear_all_ic_card"/>
+    </LinearLayout>
+</layout>

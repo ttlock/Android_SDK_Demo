@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ttlock.demo.AuthActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/tv_account"
+        android:gravity="center_vertical"
+        android:textAllCaps="false"
+        android:text="@string/account"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/et_account"
+        app:layout_constraintLeft_toRightOf="@id/tv_account"
+        android:layout_marginLeft="12dp"
+        android:gravity="center_vertical"
+        android:hint="@string/enter_account" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/tv_account"
+        android:id="@+id/tv_password"
+        android:textAllCaps="false"
+        android:text="@string/password"/>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/et_password"
+        app:layout_constraintLeft_toRightOf="@id/tv_password"
+        app:layout_constraintTop_toBottomOf="@id/et_account"
+        android:layout_marginLeft="12dp"
+        android:hint="@string/enter_password"
+        android:gravity="center_vertical" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tv_password"
+        android:id="@+id/btn_auth"
+        android:textAllCaps="false"
+        android:text="@string/authorize"/>
+</android.support.constraint.ConstraintLayout>
+</layout>
