@@ -32,7 +32,7 @@ implementation 'com.tongtonglock:ttlock:3.0.0'
 1. before call sdk api,make sure bluetooth is enabled.
 2. init sdk :
 ```
-GatewayClient.getDefault().prepareBTService(getApplicationContext());
+ TTLockClient.getDefault().prepareBTService(getApplicationContext());
 ```
 3. use api:
 ```
