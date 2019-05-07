@@ -45,7 +45,7 @@ TTLockClient.getDefault().startScanLock(new ScanLockCallback() {
 });
 ```
 ### 重置SDK服务
-#### 3)退出页面之后记得关闭SDK服务
+#### 退出页面之后记得关闭SDK服务
 ```
 TTLockClient.getDefault().stopBTService();
 ```
