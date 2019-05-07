@@ -43,7 +43,7 @@ TTLockClient.getDefault().startScanLock(new ScanLockCallback() {
     }
 });
 ```
-3. when Activity finished,you should close SDK service:
+4. when Activity finished,you should close SDK service:
 ```
 TTLockClient.getDefault().stopBTService();
 ```
