@@ -1,5 +1,8 @@
 # NewSDKAndroidDemo
 
+## English introduction click here
+https://github.com/ttlock/Android_SDK_Demo/blob/master/README.en.md
+
 #### 介绍
 新版SDK Android端Demo<br />
 1.锁操作相关： TTLockClient<br />
