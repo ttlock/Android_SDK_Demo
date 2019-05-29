@@ -1,6 +1,6 @@
 # NewSDKAndroidDemo
 
-## English introduction click here
+## English instruction link
 https://github.com/ttlock/Android_SDK_Demo/blob/master/README.en.md
 
 #### 介绍
