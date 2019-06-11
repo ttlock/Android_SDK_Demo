@@ -13,11 +13,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
+import com.ttlock.bl.sdk.api.ParamInvalidException;
 import com.ttlock.bl.sdk.api.TTLockClient;
 import com.ttlock.bl.sdk.callback.InitLockCallback;
 import com.ttlock.bl.sdk.callback.ScanLockCallback;
 import com.ttlock.bl.sdk.callback.SetNBServerCallback;
 import com.ttlock.bl.sdk.constant.Feature;
+import com.ttlock.bl.sdk.entity.HotelData;
 import com.ttlock.bl.sdk.entity.LockError;
 import com.ttlock.bl.sdk.api.ExtendedBluetoothDevice;
 
@@ -40,6 +42,8 @@ public class ScanLockActivity extends BaseActivity implements LockListAdapter.on
     protected static final int REQUEST_PERMISSION_REQ_CODE = 11;
     private LockListAdapter mListApapter;
     private String mInitLockData;
+    //mHotelInfoStr should get from server by call Url
+    private String mHotelInfoStr = "LTExMywtMTE2LC0xMTYsLTExNiwtMTEwLC0xMTUsLTEyMSwtMzgsLTExNiwtMTE0LC0xMTcsLTEyMSwtNDAsLTM3LC0zNywtMzUsLTExNSwtMTEwLC0xMTYsLTExMywtMTEzLC0xMTQsLTM1LC0xMjIsLTM1LC0zNywtMTE0LC0xMTYsLTEyMSwtMzYsLTExOCwtMzYsLTExNywtMzcsLTExMywtMzMsLTM1LC0xMTgsLTExNiwtMTE1LC0xMTcsLTM4LC0xMTMsLTExNCwtNDAsLTExMywtMzMsLTExNSwtMzcsLTExNiwtMTEwLC0xMTYsLTExNywtMTIxLC0xMTksLTExNiwtMTE0LC0xMjAsLTEyMCwzMg==";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +106,11 @@ public class ScanLockActivity extends BaseActivity implements LockListAdapter.on
                     mListApapter.updateData(device);
                 }
             }
+
+            @Override
+            public void onFail(LockError error) {
+
+            }
         });
     }
 
@@ -141,6 +150,21 @@ public class ScanLockActivity extends BaseActivity implements LockListAdapter.on
     @Override
     public void onClick(ExtendedBluetoothDevice device) {
         makeToast("--start init lock--");
+
+
+        // if you need to add a hotel lock you should set hotel data for lock init.
+
+        HotelData hotelData = new HotelData();
+        hotelData.setBuildingNumber(1);
+        hotelData.setFloorNumber(1);
+        hotelData.setHotelInfo(mHotelInfoStr);
+        try {
+            device.setHotelData(hotelData);
+        } catch (ParamInvalidException e){
+
+        }
+
+
         /**
          * lockData: the server api lockData param need
          * isNBLock: is a NB-IoT lock.
