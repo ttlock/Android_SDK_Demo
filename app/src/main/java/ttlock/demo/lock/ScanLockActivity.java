@@ -44,6 +44,11 @@ public class ScanLockActivity extends BaseActivity implements LockListAdapter.on
     private String mInitLockData;
     //mHotelInfoStr should get from server by call Url
     private String mHotelInfoStr = "LTExMywtMTE2LC0xMTYsLTExNiwtMTEwLC0xMTUsLTEyMSwtMzgsLTExNiwtMTE0LC0xMTcsLTEyMSwtNDAsLTM3LC0zNywtMzUsLTExNSwtMTEwLC0xMTYsLTExMywtMTEzLC0xMTQsLTM1LC0xMjIsLTM1LC0zNywtMTE0LC0xMTYsLTEyMSwtMzYsLTExOCwtMzYsLTExNywtMzcsLTExMywtMzMsLTM1LC0xMTgsLTExNiwtMTE1LC0xMTcsLTM4LC0xMTMsLTExNCwtNDAsLTExMywtMzMsLTExNSwtMzcsLTExNiwtMTEwLC0xMTYsLTExNywtMTIxLC0xMTksLTExNiwtMTE0LC0xMjAsLTEyMCwzMg==";
+    //the number of your hotel building
+    private int mBuildingNumber = 1;
+    //the number of your hotel floor
+    private int mFloorNumber = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,8 +160,8 @@ public class ScanLockActivity extends BaseActivity implements LockListAdapter.on
         // if you need to add a hotel lock you should set hotel data for lock init.
 
 //        HotelData hotelData = new HotelData();
-//        hotelData.setBuildingNumber(1);
-//        hotelData.setFloorNumber(1);
+//        hotelData.setBuildingNumber(mBuildingNumber);
+//        hotelData.setFloorNumber(mFloorNumber);
 //        hotelData.setHotelInfo(mHotelInfoStr);
 //        try {
 //            device.setHotelData(hotelData);
