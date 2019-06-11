@@ -154,15 +154,15 @@ public class ScanLockActivity extends BaseActivity implements LockListAdapter.on
 
         // if you need to add a hotel lock you should set hotel data for lock init.
 
-        HotelData hotelData = new HotelData();
-        hotelData.setBuildingNumber(1);
-        hotelData.setFloorNumber(1);
-        hotelData.setHotelInfo(mHotelInfoStr);
-        try {
-            device.setHotelData(hotelData);
-        } catch (ParamInvalidException e){
-
-        }
+//        HotelData hotelData = new HotelData();
+//        hotelData.setBuildingNumber(1);
+//        hotelData.setFloorNumber(1);
+//        hotelData.setHotelInfo(mHotelInfoStr);
+//        try {
+//            device.setHotelData(hotelData);
+//        } catch (ParamInvalidException e){
+//
+//        }
 
 
         /**
@@ -172,7 +172,6 @@ public class ScanLockActivity extends BaseActivity implements LockListAdapter.on
         TTLockClient.getDefault().initLock(device, new InitLockCallback() {
             @Override
             public void onInitLockSuccess(String lockData,int specialValue) {
-                Log.d("OMG","-init -success-lockData-isNBLock-" + SpecialValueUtil.isSupportFeature(specialValue,Feature.NB_LOCK));
                 //this must be done after lock is initialized,call server api to post to your server
                 if(SpecialValueUtil.isSupportFeature(specialValue,Feature.NB_LOCK)){
                     setNBServerForNBLock(lockData,device.getAddress());
