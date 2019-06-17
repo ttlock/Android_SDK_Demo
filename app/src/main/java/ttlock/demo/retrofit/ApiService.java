@@ -128,4 +128,8 @@ public interface ApiService {
     @POST("/v3/lock/upgradeRecheck")
     @FormUrlEncoded
     Call<String> lockUpgradeCheckAgain(@Field("clientId") String clientId, @Field("accessToken") String accessToken, @Field("firmwareInfo") String firmwareInfo, @Field("lockId") int lockId, @Field("date") long date);
+
+    @POST("/v3/wirelessKeyboard/add ")
+    @FormUrlEncoded
+    Call<ResponseBody> addWirelessKeypad(@FieldMap Map<String, String> params);
 }

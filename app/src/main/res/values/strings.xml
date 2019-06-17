@@ -100,4 +100,8 @@
     <string name="retry_by_ble">retry by ble</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="select_net">Choose WiFi</string>
+    <!--wireless keyboard-->
+    <string name="wirelesskeyboard">Wireless Keyboard</string>
+    <string name="start_scan">Start Scan</string>
+    <string name="stop_scan">Stop Scan</string>
 </resources>

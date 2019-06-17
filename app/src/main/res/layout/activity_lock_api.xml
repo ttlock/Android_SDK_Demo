@@ -78,6 +78,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_set_auto_lock_time"
                 android:text="@string/set_auto_locking_time"/>
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
