@@ -156,7 +156,6 @@ public class LockApiActivity extends BaseActivity {
             @Override
             public void onGetLogSuccess(String log) {
                 makeToast("Get log success!");
-                Log.d("OMG","===log==" + log);
             }
 
             @Override
