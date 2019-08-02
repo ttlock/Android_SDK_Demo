@@ -28,6 +28,7 @@ import com.ttlock.bl.sdk.util.SpecialValueUtil;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import ttlock.demo.BaseActivity;
+import ttlock.demo.DateUtils;
 import ttlock.demo.MyApplication;
 import ttlock.demo.R;
 
@@ -222,7 +223,7 @@ public class ScanLockActivity extends BaseActivity implements LockListAdapter.on
     }
 
     private void upload2Server(String lockData){
-        String lockAlias = "MyTestLock";
+        String lockAlias = "MyTestLock" + DateUtils.getMillsTimeFormat(System.currentTimeMillis());
         ApiService apiService = RetrofitAPIManager.provideClientApi();
         Call<ResponseBody> call = apiService.lockInit(ApiService.CLIENT_ID,  MyApplication.getmInstance().getAccountInfo().getAccess_token(), lockData,lockAlias,System.currentTimeMillis());
         RetrofitAPIManager.enqueue(call, new TypeToken<LockInitResultObj>() {
