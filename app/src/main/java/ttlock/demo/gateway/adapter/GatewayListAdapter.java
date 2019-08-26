@@ -164,35 +164,24 @@ public class GatewayListAdapter extends  RecyclerView.Adapter<GatewayListAdapter
 
         public void Bind(ExtendedBluetoothDevice item){
             itemBinding.tvGatewayName.setText(item.getName());
-            itemBinding.ivSettingMode.setVisibility(item.isSettingMode() ? View.VISIBLE : View.GONE);
 
-            if(item.isSettingMode()){
-                itemBinding.getRoot().setOnClickListener(view -> {
-                    if(!item.isSettingMode()){
-                        return;
+            itemBinding.getRoot().setOnClickListener(view -> {
+
+                Toast.makeText(mContext,"--connect gateway--",Toast.LENGTH_LONG).show();
+                GatewayClient.getDefault().connectGateway(item, new ConnectCallback() {
+                    @Override
+                    public void onConnectSuccess(ExtendedBluetoothDevice device) {
+                        InitGatewayActivity.launch(mContext, item);
+                        LogUtil.d("connect success");
                     }
 
-                    Toast.makeText(mContext,"--connect gateway--",Toast.LENGTH_LONG).show();
-                    GatewayClient.getDefault().connectGateway(item, new ConnectCallback() {
-                        @Override
-                        public void onConnectSuccess(ExtendedBluetoothDevice device) {
-                            InitGatewayActivity.launch(mContext, item);
-                            LogUtil.d("connect success");
-                        }
+                    @Override
+                    public void onDisconnected() {
+                        Toast.makeText(mContext, R.string.gateway_out_of_time, Toast.LENGTH_LONG).show();
+                    }
 
-                        @Override
-                        public void onDisconnected() {
-                            Toast.makeText(mContext, R.string.gateway_out_of_time, Toast.LENGTH_LONG).show();
-                        }
-
-//                        @Override
-//                        public void onFail(GatewayError error) {
-//                            //TODO:
-//                            Toast.makeText(mContext, R.string.gateway_out_of_time, Toast.LENGTH_LONG).show();
-//                        }
-                    });
                 });
-            }
+            });
         }
 
     }

@@ -18,7 +18,7 @@ Android Studio
 ## 使用说明
 ### 引入SDK
 ```
-implementation 'com.tongtonglock:ttlock:3.0.5'
+implementation 'com.tongtonglock:ttlock:3.0.6'
 ```
 
 ### manifest配置
