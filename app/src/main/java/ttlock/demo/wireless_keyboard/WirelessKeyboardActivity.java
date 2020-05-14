@@ -94,10 +94,9 @@ public class WirelessKeyboardActivity extends BaseActivity implements onLockItem
         /**
          * WirelessKeypad device,
          * String lockmac: the lock which need add wireless key pad Mac address
-         * String factoryDate:                  !!!!!!!date of manufacture of the lock which should get from server.
          * InitKeypadCallback callback :
          */
-        WirelessKeypadClient.getDefault().initializeKeypad(device, mCurrentLock.getLockMac(), "", new InitKeypadCallback() {
+        WirelessKeypadClient.getDefault().initializeKeypad(device, mCurrentLock.getLockMac(), new InitKeypadCallback() {
             @Override
             public void onInitKeypadSuccess(int specialValue) {
                 makeToast("=---add success-- upload to server to finish-");
