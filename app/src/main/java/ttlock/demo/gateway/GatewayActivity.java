@@ -60,8 +60,8 @@ public class GatewayActivity extends BaseActivity {
      */
     @TargetApi(Build.VERSION_CODES.M)
     private void startScan(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_PERMISSION_REQ_CODE);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION_REQ_CODE);
             return;
         }
         getScanGatewayCallback();
@@ -98,7 +98,7 @@ public class GatewayActivity extends BaseActivity {
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     getScanGatewayCallback();
                 } else {
-                    if (permissions[0].equals(Manifest.permission.ACCESS_COARSE_LOCATION)){
+                    if (permissions[0].equals(Manifest.permission.ACCESS_FINE_LOCATION)){
 
                     }
                 }

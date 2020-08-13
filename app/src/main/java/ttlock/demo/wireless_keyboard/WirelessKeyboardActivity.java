@@ -75,8 +75,8 @@ public class WirelessKeyboardActivity extends BaseActivity implements onLockItem
      */
     @TargetApi(Build.VERSION_CODES.M)
     private void startScan(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_PERMISSION_REQ_CODE);
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION_REQ_CODE);
             return;
         }
 
@@ -143,7 +143,7 @@ public class WirelessKeyboardActivity extends BaseActivity implements onLockItem
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     getScanWirelessKeyboardCallback();
                 } else {
-                    if (permissions[0].equals(Manifest.permission.ACCESS_COARSE_LOCATION)){
+                    if (permissions[0].equals(Manifest.permission.ACCESS_FINE_LOCATION)){
 
                     }
                 }
