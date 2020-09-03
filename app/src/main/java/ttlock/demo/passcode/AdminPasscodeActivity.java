@@ -8,10 +8,9 @@ import com.google.gson.reflect.TypeToken;
 import com.ttlock.bl.sdk.api.TTLockClient;
 import com.ttlock.bl.sdk.callback.GetAdminPasscodeCallback;
 import com.ttlock.bl.sdk.callback.ModifyAdminPasscodeCallback;
-import com.ttlock.bl.sdk.constant.Feature;
+import com.ttlock.bl.sdk.constant.FeatureValue;
 import com.ttlock.bl.sdk.entity.LockError;
-import com.ttlock.bl.sdk.util.DigitUtil;
-import com.ttlock.bl.sdk.util.SpecialValueUtil;
+import com.ttlock.bl.sdk.util.FeatureValueUtil;
 
 import java.util.HashMap;
 
@@ -19,12 +18,12 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import ttlock.demo.BaseActivity;
 import ttlock.demo.MyApplication;
-
-import ttlock.demo.R;;
-
+import ttlock.demo.R;
 import ttlock.demo.databinding.ActivityAdminPasscodeBinding;
 import ttlock.demo.retrofit.ApiService;
 import ttlock.demo.retrofit.RetrofitAPIManager;
+
+;
 
 public class AdminPasscodeActivity extends BaseActivity {
     ActivityAdminPasscodeBinding binding;
@@ -47,7 +46,7 @@ public class AdminPasscodeActivity extends BaseActivity {
     private void getAdminPasscode(){
         ensureBluetoothIsEnabled();
         showConnectLockToast();
-        if(!SpecialValueUtil.isSupportFeature(mCurrentLock.getSpecialValue(),Feature.GET_ADMIN_CODE)){
+        if(!FeatureValueUtil.isSupportFeature(mCurrentLock.getFeatureValue(), FeatureValue.GET_ADMIN_CODE)){
             makeToast("--this lock does not support this operation--");
             return;
         }

@@ -15,10 +15,10 @@ import com.ttlock.bl.sdk.api.TTLockClient;
 import com.ttlock.bl.sdk.api.WirelessKeypadClient;
 import com.ttlock.bl.sdk.callback.InitKeypadCallback;
 import com.ttlock.bl.sdk.callback.ScanKeypadCallback;
-import com.ttlock.bl.sdk.constant.Feature;
+import com.ttlock.bl.sdk.constant.FeatureValue;
 import com.ttlock.bl.sdk.device.WirelessKeypad;
 import com.ttlock.bl.sdk.entity.LockError;
-import com.ttlock.bl.sdk.util.SpecialValueUtil;
+import com.ttlock.bl.sdk.util.FeatureValueUtil;
 
 import java.util.HashMap;
 
@@ -87,7 +87,7 @@ public class WirelessKeyboardActivity extends BaseActivity implements onLockItem
 
     @Override
     public void onClick(WirelessKeypad device) {
-        if(!SpecialValueUtil.isSupportFeature(mCurrentLock.getSpecialValue(),Feature.WIRELESS_KEYBOARD)){
+        if(!FeatureValueUtil.isSupportFeature(mCurrentLock.getFeatureValue(), FeatureValue.WIRELESS_KEYBOARD)){
             makeToast("--lock does not support add wireless keyboard--");
             return;
         }

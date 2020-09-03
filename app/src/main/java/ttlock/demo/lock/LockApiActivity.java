@@ -2,7 +2,6 @@ package ttlock.demo.lock;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 import com.ttlock.bl.sdk.api.TTLockClient;
@@ -22,12 +21,12 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import ttlock.demo.BaseActivity;
 import ttlock.demo.MyApplication;
-
-import ttlock.demo.R;;
-
+import ttlock.demo.R;
 import ttlock.demo.databinding.ActivityLockApiBinding;
 import ttlock.demo.retrofit.ApiService;
 import ttlock.demo.retrofit.RetrofitAPIManager;
+
+;
 
 public class LockApiActivity extends BaseActivity {
 
@@ -73,7 +72,7 @@ public class LockApiActivity extends BaseActivity {
         showConnectLockToast();
         TTLockClient.getDefault().resetEkey(mCurrentLock.getLockData(),mCurrentLock.getLockMac(), new ResetKeyCallback() {
             @Override
-            public void onResetKeySuccess(int lockFlagPos) {
+            public void onResetKeySuccess(String lockData) {
                uploadResetEkeyResult2Server();
             }
 

@@ -10,20 +10,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
-import com.ttlock.bl.sdk.api.ParamInvalidException;
+import com.ttlock.bl.sdk.api.ExtendedBluetoothDevice;
 import com.ttlock.bl.sdk.api.TTLockClient;
 import com.ttlock.bl.sdk.callback.InitLockCallback;
 import com.ttlock.bl.sdk.callback.ScanLockCallback;
 import com.ttlock.bl.sdk.callback.SetNBServerCallback;
-import com.ttlock.bl.sdk.constant.Feature;
-import com.ttlock.bl.sdk.entity.HotelData;
+import com.ttlock.bl.sdk.constant.FeatureValue;
 import com.ttlock.bl.sdk.entity.LockError;
-import com.ttlock.bl.sdk.api.ExtendedBluetoothDevice;
-
-import com.ttlock.bl.sdk.util.SpecialValueUtil;
+import com.ttlock.bl.sdk.util.FeatureValueUtil;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -31,7 +27,6 @@ import ttlock.demo.BaseActivity;
 import ttlock.demo.DateUtils;
 import ttlock.demo.MyApplication;
 import ttlock.demo.R;
-
 import ttlock.demo.databinding.ActivityScanLockBinding;
 import ttlock.demo.lock.adapter.LockListAdapter;
 import ttlock.demo.lock.model.LockInitResultObj;
@@ -177,9 +172,9 @@ public class ScanLockActivity extends BaseActivity implements LockListAdapter.on
          */
         TTLockClient.getDefault().initLock(device, new InitLockCallback() {
             @Override
-            public void onInitLockSuccess(String lockData,int specialValue) {
+            public void onInitLockSuccess(String lockData) {
                 //this must be done after lock is initialized,call server api to post to your server
-                if(SpecialValueUtil.isSupportFeature(specialValue,Feature.NB_LOCK)){
+                if(FeatureValueUtil.isSupportFeature(lockData, FeatureValue.NB_LOCK)){
                     setNBServerForNBLock(lockData,device.getAddress());
                 }else {
                     makeToast("--lock is initialized success--");
@@ -206,7 +201,7 @@ public class ScanLockActivity extends BaseActivity implements LockListAdapter.on
         //NB server port
         short mNBServerPort = 8011;
         String mNBServerAddress = "192.127.123.11";
-        TTLockClient.getDefault().setNBServerInfo(mNBServerPort, mNBServerAddress, lockData, lockMac, new SetNBServerCallback() {
+        TTLockClient.getDefault().setNBServerInfo(mNBServerPort, mNBServerAddress, lockData, new SetNBServerCallback() {
             @Override
             public void onSetNBServerSuccess(int battery) {
                 makeToast("--set NB server success--");

@@ -38,6 +38,7 @@ public class LockObj implements Serializable{
     private String userType;
     private String lockName;
     private String firmwareRevision;
+    private String featureValue;
 
     public long getDate() {
         return date;
@@ -149,5 +150,13 @@ public class LockObj implements Serializable{
 
     public void setFirmwareRevision(String firmwareRevision) {
         this.firmwareRevision = firmwareRevision;
+    }
+
+    public String getFeatureValue() {
+        return featureValue;
+    }
+
+    public void setFeatureValue(String featureValue) {
+        this.featureValue = featureValue;
     }
 }

@@ -9,6 +9,7 @@ import com.google.gson.reflect.TypeToken;
 import com.ttlock.bl.sdk.api.TTLockClient;
 import com.ttlock.bl.sdk.callback.ControlLockCallback;
 import com.ttlock.bl.sdk.constant.ControlAction;
+import com.ttlock.bl.sdk.entity.ControlLockResult;
 import com.ttlock.bl.sdk.entity.LockError;
 
 import java.util.ArrayList;
@@ -16,13 +17,10 @@ import java.util.HashMap;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import ttlock.demo.databinding.ActivityUnlockBinding;
 import ttlock.demo.BaseActivity;
 import ttlock.demo.MyApplication;
 import ttlock.demo.R;
-
 import ttlock.demo.databinding.ActivityUnlockBinding;
-
 import ttlock.demo.lock.model.KeyListObj;
 import ttlock.demo.lock.model.KeyObj;
 import ttlock.demo.retrofit.ApiService;
@@ -89,7 +87,7 @@ public class UnlockActivity extends BaseActivity {
         showConnectLockToast();
         TTLockClient.getDefault().controlLock(ControlAction.UNLOCK, mMyTestLockEKey.getLockData(), mMyTestLockEKey.getLockMac(),new ControlLockCallback() {
             @Override
-            public void onControlLockSuccess(int lockAction, int battery, int uniqueId) {
+            public void onControlLockSuccess(ControlLockResult controlLockResult) {
                 Toast.makeText(UnlockActivity.this,"lock is unlock  success!",Toast.LENGTH_LONG).show();
             }
 
@@ -112,7 +110,7 @@ public class UnlockActivity extends BaseActivity {
         showConnectLockToast();
         TTLockClient.getDefault().controlLock(ControlAction.LOCK, mMyTestLockEKey.getLockData(), mMyTestLockEKey.getLockMac(),new ControlLockCallback() {
             @Override
-            public void onControlLockSuccess(int lockAction, int battery, int uniqueId) {
+            public void onControlLockSuccess(ControlLockResult controlLockResult) {
                 Toast.makeText(UnlockActivity.this,"lock is locked!",Toast.LENGTH_LONG).show();
             }
 

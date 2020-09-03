@@ -141,8 +141,8 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
     private void setRemoteUnlockFunction(final boolean enable){
         TTLockClient.getDefault().setRemoteUnlockSwitchState(enable, mCurrentLock.getLockData(), mCurrentLock.getLockMac(),new SetRemoteUnlockSwitchCallback() {
             @Override
-            public void onSetRemoteUnlockSwitchSuccess(int specialValue) {
-                makeToast("--remote unlock switch has been changed success--specialValue is ===" + specialValue);
+            public void onSetRemoteUnlockSwitchSuccess(String lockData) {
+                makeToast("--remote unlock switch has been changed success--");
 
             }
 
