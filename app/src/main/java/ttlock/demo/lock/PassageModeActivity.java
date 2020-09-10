@@ -2,12 +2,7 @@ package ttlock.demo.lock;
 
 
 import android.databinding.DataBindingUtil;
-
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
-import ttlock.demo.R;
-
 
 import com.ttlock.bl.sdk.api.TTLockClient;
 import com.ttlock.bl.sdk.callback.ClearPassageModeCallback;
@@ -18,7 +13,6 @@ import com.ttlock.bl.sdk.entity.LockError;
 import com.ttlock.bl.sdk.entity.PassageModeConfig;
 import com.ttlock.bl.sdk.entity.PassageModeType;
 import com.ttlock.bl.sdk.util.GsonUtil;
-
 
 import ttlock.demo.BaseActivity;
 import ttlock.demo.R;
@@ -69,8 +63,8 @@ public class PassageModeActivity extends BaseActivity {
      */
     private void setPassageMode2Lock(){
         PassageModeConfig modeData = new PassageModeConfig();
-        modeData.setStartDate(System.currentTimeMillis());
-        modeData.setEndDate(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000);
+        modeData.setStartDate(8 * 60);//am: 8:00
+        modeData.setEndDate(18 * 60);//pm:  6:00
         modeData.setModeType(PassageModeType.Weekly);
         //if mode is Weekly,then the WeekDays is
         int[] mCircleWeeksArray = {1,2,3,4,5};
@@ -91,8 +85,8 @@ public class PassageModeActivity extends BaseActivity {
 
     private void deleteOnePassageModeSetting(){
         PassageModeConfig modeData = new PassageModeConfig();
-        modeData.setStartDate(System.currentTimeMillis());
-        modeData.setEndDate(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000);
+        modeData.setStartDate(8 * 60);//am: 8:00
+        modeData.setEndDate(18 * 60);//pm:  6:00
         modeData.setModeType(PassageModeType.Weekly);
         //if mode is Weekly,then the WeekDays is
         int[] mCircleWeeksArray = {2,3,4,5,6};
