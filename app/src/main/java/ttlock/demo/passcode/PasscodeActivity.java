@@ -87,9 +87,9 @@ public class PasscodeActivity extends BaseActivity {
         showConnectLockToast();
         TTLockClient.getDefault().resetPasscode(mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new ResetPasscodeCallback() {
             @Override
-            public void onResetPasscodeSuccess(String pwdInfo, long timestamp) {
+            public void onResetPasscodeSuccess(String lockData) {
                 //this must be done after callback success,or the lock passcode would be work well.
-                uploadResetPasscodeResult2Server(pwdInfo,timestamp);
+                uploadResetPasscodeResult2Server(lockData);
             }
 
             @Override
@@ -99,9 +99,9 @@ public class PasscodeActivity extends BaseActivity {
         });
     }
 
-    private void uploadResetPasscodeResult2Server(String pwdInfo, long timestamp){
+    private void uploadResetPasscodeResult2Server(String lockData){
         ApiService apiService = RetrofitAPIManager.provideClientApi();
-        Call<ResponseBody> call = apiService.resetPasscode(ApiService.CLIENT_ID,  MyApplication.getmInstance().getAccountInfo().getAccess_token(), mCurrentLock.getLockId(),pwdInfo,timestamp,System.currentTimeMillis());
+        Call<ResponseBody> call = apiService.updateLockData(ApiService.CLIENT_ID,  MyApplication.getmInstance().getAccountInfo().getAccess_token(), mCurrentLock.getLockId(),lockData,System.currentTimeMillis());
         RetrofitAPIManager.enqueue(call, new TypeToken<Object>() {
         }, result -> {
             if (!result.success) {
@@ -120,8 +120,8 @@ public class PasscodeActivity extends BaseActivity {
         showConnectLockToast();
         TTLockClient.getDefault().getPasscodeVerificationParams(mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new GetPasscodeVerificationInfoCallback() {
             @Override
-            public void onGetInfoSuccess(String pwdInfo, long timestamp) {
-                makeToast("--success--pwdInfo-" + pwdInfo);
+            public void onGetInfoSuccess(String lockData) {
+                makeToast("--success--lockData-" + lockData);
             }
 
             @Override

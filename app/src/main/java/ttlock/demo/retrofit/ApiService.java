@@ -67,6 +67,10 @@ public interface ApiService {
     @FormUrlEncoded
     Call<ResponseBody> resetPasscode(@Field("clientId") String clientId, @Field("accessToken") String accessToken, @Field("lockId") int lockId, @Field("pwdInfo") String pwdInfo, @Field("timestamp") long timestamp, @Field("date") long date);
 
+    @POST("/v3/lock/updateLockData")
+    @FormUrlEncoded
+    Call<ResponseBody> updateLockData(@Field("clientId") String clientId, @Field("accessToken") String accessToken,@Field("lockId") int lockId,  @Field("lockData") String lockData, @Field("date") long date);
+
     @POST("/v3/lock/changeAdminKeyboardPwd")
     @FormUrlEncoded
     Call<ResponseBody> changeAdminPasscode(@FieldMap Map<String, String> params);
