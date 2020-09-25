@@ -12,10 +12,11 @@ import com.ttlock.bl.sdk.callback.GetOperationLogCallback;
 import com.ttlock.bl.sdk.callback.ResetKeyCallback;
 import com.ttlock.bl.sdk.callback.ResetLockCallback;
 import com.ttlock.bl.sdk.callback.SetAutoLockingPeriodCallback;
+import com.ttlock.bl.sdk.constant.FeatureValue;
 import com.ttlock.bl.sdk.constant.LogType;
 import com.ttlock.bl.sdk.entity.DeviceInfo;
 import com.ttlock.bl.sdk.entity.LockError;
-import com.ttlock.bl.sdk.util.DigitUtil;
+import com.ttlock.bl.sdk.util.FeatureValueUtil;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -219,7 +220,7 @@ public class LockApiActivity extends BaseActivity {
      *
      */
     private void setAutoLockingPeriod(){
-        if(!DigitUtil.isSupportAutoLock(mCurrentLock.getSpecialValue())){
+        if(!FeatureValueUtil.isSupportFeature(mCurrentLock.getLockData(), FeatureValue.AUTO_LOCK)){
             makeToast("this lock dose not support automatic locking");
         }
         showConnectLockToast();

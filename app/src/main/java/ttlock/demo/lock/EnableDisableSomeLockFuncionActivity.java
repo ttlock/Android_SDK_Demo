@@ -8,13 +8,12 @@ import com.ttlock.bl.sdk.callback.GetLockMuteModeStateCallback;
 import com.ttlock.bl.sdk.callback.GetRemoteUnlockStateCallback;
 import com.ttlock.bl.sdk.callback.SetLockMuteModeCallback;
 import com.ttlock.bl.sdk.callback.SetRemoteUnlockSwitchCallback;
+import com.ttlock.bl.sdk.constant.FeatureValue;
 import com.ttlock.bl.sdk.entity.LockError;
-import com.ttlock.bl.sdk.util.DigitUtil;
+import com.ttlock.bl.sdk.util.FeatureValueUtil;
 
 import ttlock.demo.BaseActivity;
-
 import ttlock.demo.R;
-
 import ttlock.demo.databinding.ActivityEnableDisableSomeLockFuncionBinding;
 
 public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
@@ -32,7 +31,7 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
 
     private void initListener(){
         binding.btnGetMuteState.setOnClickListener(v -> {
-            if(!DigitUtil.isSupportAudioManagement(mCurrentLock.getSpecialValue())){
+            if(!FeatureValueUtil.isSupportFeature(mCurrentLock.getLockData(), FeatureValue.AUDIO_MANAGEMENT)){
                 makeToast("this lock does not support this feature");
             }else {
                 makeToast("get mute mode state..");
@@ -40,7 +39,7 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
             }
         });
         binding.swAudio.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if(!DigitUtil.isSupportAudioManagement(mCurrentLock.getSpecialValue())){
+            if(!FeatureValueUtil.isSupportFeature(mCurrentLock.getLockData(), FeatureValue.AUDIO_MANAGEMENT)){
                 makeToast("this lock does not support this feature");
             }else {
                 makeToast("switch mute mode...");
@@ -49,7 +48,7 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
         });
 
         binding.btnRemoteUnlockState.setOnClickListener(v -> {
-            if(!DigitUtil.isSupportRemoteUnlockSwitch(mCurrentLock.getSpecialValue())){
+            if(!FeatureValueUtil.isSupportFeature(mCurrentLock.getLockData(), FeatureValue.GATEWAY_UNLOCK)){
                 makeToast("this lock does not support this feature");
             }else {
                 makeToast("get remote unlock state..");
@@ -58,7 +57,7 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
         });
 
         binding.swRemoteUnlock.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if(!DigitUtil.isSupportRemoteUnlockSwitch(mCurrentLock.getSpecialValue())){
+            if(!FeatureValueUtil.isSupportFeature(mCurrentLock.getLockData(), FeatureValue.GATEWAY_UNLOCK)){
                 makeToast("this lock does not support this feature");
             }else {
                 makeToast("switch remote unlock function ...");
@@ -71,7 +70,7 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
      * before query or set Lock Property such as setAudioSwitchState / setRemoteUnlockSwitchState,you should use specialValue to judge if the lock is support or not.
      */
     private void getLockMuteModeState(){
-        if(!DigitUtil.isSupportAudioManagement(mCurrentLock.getSpecialValue())){
+        if(!FeatureValueUtil.isSupportFeature(mCurrentLock.getLockData(), FeatureValue.AUDIO_MANAGEMENT)){
             makeToast("this lock does not support mute mode");
             return;
         }
@@ -97,7 +96,7 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
      * send data to Bluetooth should one by one.It only support one connect.So the TTLockSDK Api should be called one by one.
      */
     private void getRemoteUnlockState(){
-        if(!DigitUtil.isSupportAudioManagement(mCurrentLock.getSpecialValue())){
+        if(!FeatureValueUtil.isSupportFeature(mCurrentLock.getLockData(), FeatureValue.GATEWAY_UNLOCK)){
             makeToast("this lock does not support remote unlock");
 
             return;
