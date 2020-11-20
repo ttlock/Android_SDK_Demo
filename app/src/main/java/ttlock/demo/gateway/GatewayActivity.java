@@ -112,7 +112,7 @@ public class GatewayActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == GatewayClient.REQUEST_ENABLE_BT && requestCode == Activity.RESULT_OK) {
+        if (requestCode == GatewayClient.REQUEST_ENABLE_BT && resultCode == Activity.RESULT_OK) {
             startScan();
         }
     }
