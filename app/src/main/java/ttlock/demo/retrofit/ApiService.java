@@ -18,7 +18,6 @@ public interface ApiService {
 
     public static final String CLIENT_ID = "439063e312444f1f85050a52efcecd2e";
     public static final String CLIENT_SECRET = "0ef1c49b70c02ae6314bde603d4e9b05";
-    public static final String REDIRECT_URI = "http://open.ttlock.com.cn";
 
 
     @POST("/lockRecords/fromLock")
@@ -42,7 +41,7 @@ public interface ApiService {
 //
     @POST("/oauth2/token")
     @FormUrlEncoded
-    Call<String> auth(@Field("client_id") String clientId, @Field("client_secret") String clientSecret, @Field("grant_type") String grantType, @Field("username") String username, @Field("password") String password, @Field("redirect_uri") String redirectUri);
+    Call<String> auth(@Field("client_id") String clientId, @Field("client_secret") String clientSecret, @Field("username") String username, @Field("password") String password);
 
     @POST("/v3/lock/list")
     @FormUrlEncoded

@@ -41,7 +41,7 @@ public class AuthActivity extends BaseActivity {
         String account = binding.etAccount.getText().toString().trim();
         password = binding.etPassword.getText().toString().trim();
         password = DigitUtil.getMD5(password);
-        Call<String> call = apiService.auth(ApiService.CLIENT_ID, ApiService.CLIENT_SECRET, "password", account, password, ApiService.REDIRECT_URI);
+        Call<String> call = apiService.auth(ApiService.CLIENT_ID, ApiService.CLIENT_SECRET, account, password);
         call.enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, retrofit2.Response<String> response) {
