@@ -118,7 +118,7 @@ public class PasscodeActivity extends BaseActivity {
 
     private void getPwdInfo(){
         showConnectLockToast();
-        TTLockClient.getDefault().getPasscodeVerificationParams(mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new GetPasscodeVerificationInfoCallback() {
+        TTLockClient.getDefault().getPasscodeVerificationParams(mCurrentLock.getLockData(), new GetPasscodeVerificationInfoCallback() {
             @Override
             public void onGetInfoSuccess(String lockData) {
                 makeToast("--success--lockData-" + lockData);
