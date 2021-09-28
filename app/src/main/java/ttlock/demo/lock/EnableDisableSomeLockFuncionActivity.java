@@ -3,18 +3,28 @@ package ttlock.demo.lock;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 
+import com.google.gson.reflect.TypeToken;
 import com.ttlock.bl.sdk.api.TTLockClient;
 import com.ttlock.bl.sdk.callback.GetLockMuteModeStateCallback;
 import com.ttlock.bl.sdk.callback.GetRemoteUnlockStateCallback;
 import com.ttlock.bl.sdk.callback.SetLockMuteModeCallback;
 import com.ttlock.bl.sdk.callback.SetRemoteUnlockSwitchCallback;
 import com.ttlock.bl.sdk.constant.FeatureValue;
+import com.ttlock.bl.sdk.device.WirelessKeypad;
 import com.ttlock.bl.sdk.entity.LockError;
 import com.ttlock.bl.sdk.util.FeatureValueUtil;
 
+import java.util.HashMap;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
 import ttlock.demo.BaseActivity;
+import ttlock.demo.DateUtils;
+import ttlock.demo.MyApplication;
 import ttlock.demo.R;
 import ttlock.demo.databinding.ActivityEnableDisableSomeLockFuncionBinding;
+import ttlock.demo.retrofit.ApiService;
+import ttlock.demo.retrofit.RetrofitAPIManager;
 
 public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
     ActivityEnableDisableSomeLockFuncionBinding binding;
@@ -48,7 +58,7 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
         });
 
         binding.btnRemoteUnlockState.setOnClickListener(v -> {
-            if(!FeatureValueUtil.isSupportFeature(mCurrentLock.getLockData(), FeatureValue.GATEWAY_UNLOCK)){
+            if(!FeatureValueUtil.isSupportFeature(mCurrentLock.getLockData(), FeatureValue.CONFIG_GATEWAY_UNLOCK)){
                 makeToast("this lock does not support this feature");
             }else {
                 makeToast("get remote unlock state..");
@@ -57,7 +67,7 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
         });
 
         binding.swRemoteUnlock.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if(!FeatureValueUtil.isSupportFeature(mCurrentLock.getLockData(), FeatureValue.GATEWAY_UNLOCK)){
+            if(!FeatureValueUtil.isSupportFeature(mCurrentLock.getLockData(), FeatureValue.CONFIG_GATEWAY_UNLOCK)){
                 makeToast("this lock does not support this feature");
             }else {
                 makeToast("switch remote unlock function ...");
@@ -134,7 +144,7 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
     }
 
     /**  NOTICE !!!!!!!!
-     *  remote unlock feature switch on/off will change the specialValue.So you should update the latest specialValue to your Server in time.
+     *  remote unlock feature switch on/off will change the lockData.So you should update the latest lockData to your Server in time.
      * @param enable the remote unlock feature on/off  true means on,false means off.
      */
     private void setRemoteUnlockFunction(final boolean enable){
@@ -142,13 +152,40 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
             @Override
             public void onSetRemoteUnlockSwitchSuccess(String lockData) {
                 makeToast("--remote unlock switch has been changed success--");
-
+                updateLockData(lockData);
             }
 
             @Override
             public void onFail(LockError error) {
                 makeErrorToast(error);
             }
+        });
+    }
+
+    private void updateLockData(String lockData){
+        ApiService apiService = RetrofitAPIManager.provideClientApi();
+        HashMap<String,String> params = new HashMap<>(8);
+        params.put("clientId",ApiService.CLIENT_ID);
+        params.put("accessToken", MyApplication.getmInstance().getAccountInfo().getAccess_token());
+        params.put("lockId",String.valueOf(mCurrentLock.getLockId()));
+        params.put("lockData", lockData);
+        params.put("date",String.valueOf(System.currentTimeMillis()));
+
+        Call<ResponseBody> call = apiService.updateLockData(params);
+        RetrofitAPIManager.enqueue(call, new TypeToken<Object>() {
+        }, result -> {
+            if (!result.success) {
+                makeToast("-update the lock data to server fail -" + result.getMsg());
+                //if upload fail you should cache lockData and upload again until success,or you should reset lock and do init again.
+                return;
+            }
+
+            //you need get the new lockData from the server, the lockData has been changed.
+            mCurrentLock.setLockData(lockData);
+            makeToast("--update the lock data to server success--");
+
+        }, requestError -> {
+            makeToast(requestError.getMessage());
         });
     }
 

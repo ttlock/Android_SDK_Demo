@@ -11,6 +11,8 @@ import com.ttlock.bl.sdk.callback.GetPasscodeVerificationInfoCallback;
 import com.ttlock.bl.sdk.callback.ResetPasscodeCallback;
 import com.ttlock.bl.sdk.entity.LockError;
 
+import java.util.HashMap;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import ttlock.demo.BaseActivity;
@@ -101,7 +103,14 @@ public class PasscodeActivity extends BaseActivity {
 
     private void uploadResetPasscodeResult2Server(String lockData){
         ApiService apiService = RetrofitAPIManager.provideClientApi();
-        Call<ResponseBody> call = apiService.updateLockData(ApiService.CLIENT_ID,  MyApplication.getmInstance().getAccountInfo().getAccess_token(), mCurrentLock.getLockId(),lockData,System.currentTimeMillis());
+        HashMap<String,String> params = new HashMap<>(8);
+        params.put("clientId",ApiService.CLIENT_ID);
+        params.put("accessToken", MyApplication.getmInstance().getAccountInfo().getAccess_token());
+        params.put("lockId",String.valueOf(mCurrentLock.getLockId()));
+        params.put("lockData", lockData);
+        params.put("date",String.valueOf(System.currentTimeMillis()));
+
+        Call<ResponseBody> call = apiService.updateLockData(params);
         RetrofitAPIManager.enqueue(call, new TypeToken<Object>() {
         }, result -> {
             if (!result.success) {
@@ -110,7 +119,8 @@ public class PasscodeActivity extends BaseActivity {
                 return;
             }
             makeToast("--reset passcode and notify server success--");
-
+            //you need get the new lockData from the server, the lockData has been changed.
+            mCurrentLock.setLockData(lockData);
         }, requestError -> {
             makeToast(requestError.getMessage());
         });

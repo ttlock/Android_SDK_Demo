@@ -18,6 +18,8 @@ import com.ttlock.bl.sdk.entity.DeviceInfo;
 import com.ttlock.bl.sdk.entity.LockError;
 import com.ttlock.bl.sdk.util.FeatureValueUtil;
 
+import java.util.HashMap;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import ttlock.demo.BaseActivity;
@@ -74,7 +76,8 @@ public class LockApiActivity extends BaseActivity {
         TTLockClient.getDefault().resetEkey(mCurrentLock.getLockData(),mCurrentLock.getLockMac(), new ResetKeyCallback() {
             @Override
             public void onResetKeySuccess(String lockData) {
-               uploadResetEkeyResult2Server();
+                updateLockData(lockData);
+//               uploadResetEkeyResult2Server();
             }
 
             @Override
@@ -85,25 +88,56 @@ public class LockApiActivity extends BaseActivity {
     }
 
     /**
-     *  call https://api.sciener.cn/v3/lock/resetKey this api to notify server resetKey has been done.
-     *
+     * The lockData of the lock have been changed, so you need notify the server to update the lockData.
+     * @param lockData
      */
-    private void uploadResetEkeyResult2Server(){
+    private void updateLockData(String lockData){
         ApiService apiService = RetrofitAPIManager.provideClientApi();
-        Call<ResponseBody> call = apiService.restEkey(ApiService.CLIENT_ID,  MyApplication.getmInstance().getAccountInfo().getAccess_token(), mCurrentLock.getLockId(),System.currentTimeMillis());
+        HashMap<String,String> params = new HashMap<>(8);
+        params.put("clientId",ApiService.CLIENT_ID);
+        params.put("accessToken", MyApplication.getmInstance().getAccountInfo().getAccess_token());
+        params.put("lockId",String.valueOf(mCurrentLock.getLockId()));
+        params.put("lockData", lockData);
+        params.put("date",String.valueOf(System.currentTimeMillis()));
+
+        Call<ResponseBody> call = apiService.updateLockData(params);
         RetrofitAPIManager.enqueue(call, new TypeToken<Object>() {
         }, result -> {
             if (!result.success) {
-                makeToast("-init fail-upload to server-" + result.getMsg());
+                makeToast("-update the lock data to server fail -" + result.getMsg());
                 //if upload fail you should cache lockData and upload again until success,or you should reset lock and do init again.
                 return;
             }
-            makeToast("--reset key and notify server success--");
+
+            //you need get the new lockData from the server, the lockData has been changed.
+            mCurrentLock.setLockData(lockData);
+            makeToast("--update the lock data to server success--");
 
         }, requestError -> {
             makeToast(requestError.getMessage());
         });
     }
+
+    /**
+     *  call https://api.sciener.cn/v3/lock/resetKey this api to notify server resetKey has been done.
+     *
+     */
+//    private void uploadResetEkeyResult2Server(){
+//        ApiService apiService = RetrofitAPIManager.provideClientApi();
+//        Call<ResponseBody> call = apiService.restEkey(ApiService.CLIENT_ID,  MyApplication.getmInstance().getAccountInfo().getAccess_token(), mCurrentLock.getLockId(),System.currentTimeMillis());
+//        RetrofitAPIManager.enqueue(call, new TypeToken<Object>() {
+//        }, result -> {
+//            if (!result.success) {
+//                makeToast("-init fail-upload to server-" + result.getMsg());
+//                //if upload fail you should cache lockData and upload again until success,or you should reset lock and do init again.
+//                return;
+//            }
+//            makeToast("--reset key and notify server success--");
+//
+//        }, requestError -> {
+//            makeToast(requestError.getMessage());
+//        });
+//    }
 
     /**
      * resetLock

@@ -135,4 +135,8 @@ public interface ApiService {
     @POST("/v3/wirelessKeyboard/add ")
     @FormUrlEncoded
     Call<ResponseBody> addWirelessKeypad(@FieldMap Map<String, String> params);
+
+    @POST("/v3/lock/updateLockData")
+    @FormUrlEncoded
+    Call<ResponseBody> updateLockData(@FieldMap Map<String, String> params);
 }
