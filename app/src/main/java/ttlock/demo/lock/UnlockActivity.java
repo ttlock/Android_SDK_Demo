@@ -102,13 +102,13 @@ public class UnlockActivity extends BaseActivity {
      * use eKey for controlLock interface
      */
     private void doLockLock(){
-        if(mMyTestLockEKey == null){
-            makeToast(" you should get your key list first ");
-            return;
-        }
+//        if(mMyTestLockEKey == null){
+//            makeToast(" you should get your key list first ");
+//            return;
+//        }
         ensureBluetoothIsEnabled();
         showConnectLockToast();
-        TTLockClient.getDefault().controlLock(ControlAction.LOCK, mMyTestLockEKey.getLockData(), mMyTestLockEKey.getLockMac(),new ControlLockCallback() {
+        TTLockClient.getDefault().controlLock(ControlAction.LOCK, mCurrentLock.getLockData(), mCurrentLock.getLockMac(),new ControlLockCallback() {
             @Override
             public void onControlLockSuccess(ControlLockResult controlLockResult) {
                 Toast.makeText(UnlockActivity.this,"lock is locked!",Toast.LENGTH_LONG).show();
