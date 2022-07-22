@@ -2,7 +2,7 @@ package ttlock.demo.fingerprint;
 
 import android.content.Context;
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import com.google.gson.reflect.TypeToken;

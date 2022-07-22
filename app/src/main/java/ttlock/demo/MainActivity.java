@@ -1,12 +1,11 @@
 package ttlock.demo;
 
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import ttlock.demo.databinding.ActivityMainBinding;
 import ttlock.demo.fingerprint.FingerprintActivity;
 import ttlock.demo.firmwareupdate.FirmwareUpdateActivity;
-import ttlock.demo.gateway.UserGatewayActivity;
 import ttlock.demo.iccard.ICCardActivity;
 import ttlock.demo.lock.LockApiActivity;
 import ttlock.demo.passcode.PasscodeActivity;

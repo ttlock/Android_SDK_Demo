@@ -1,6 +1,11 @@
 package ttlock.demo.firmwareupdate;
 
-import android.databinding.DataBindingUtil;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
+
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 
@@ -29,6 +34,7 @@ public class FirmwareUpdateActivity extends BaseActivity {
     private ActivityFirmwareUpdateBinding binding;
     private LockUpgradeObj lockUpgradeObj;
     private boolean isFailure;
+    protected static final int REQUEST_PERMISSION_REQ_CODE = 11;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,6 +137,10 @@ public class FirmwareUpdateActivity extends BaseActivity {
     }
 
     private void startDfu() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION_REQ_CODE);
+            return;
+        }
         if (mCurrentLock != null) {
             LockDfuClient.getDefault().startDfu(getApplicationContext(), ApiService.CLIENT_ID, MyApplication.getmInstance().getAccountInfo().getAccess_token(), mCurrentLock.getLockId(), mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new DfuCallback() {
                 @Override
@@ -184,6 +194,25 @@ public class FirmwareUpdateActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults.length == 0 ){
+            return;
+        }
+
+        switch (requestCode) {
+            case REQUEST_PERMISSION_REQ_CODE: {
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED && permissions[0].equals(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                    startDfu();
+                }
+                break;
+            }
+            default:
+                break;
+        }
     }
 
     /**

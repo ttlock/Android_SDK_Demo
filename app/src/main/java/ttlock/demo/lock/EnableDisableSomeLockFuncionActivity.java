@@ -1,6 +1,6 @@
 package ttlock.demo.lock;
 
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import com.google.gson.reflect.TypeToken;
@@ -10,7 +10,6 @@ import com.ttlock.bl.sdk.callback.GetRemoteUnlockStateCallback;
 import com.ttlock.bl.sdk.callback.SetLockMuteModeCallback;
 import com.ttlock.bl.sdk.callback.SetRemoteUnlockSwitchCallback;
 import com.ttlock.bl.sdk.constant.FeatureValue;
-import com.ttlock.bl.sdk.device.WirelessKeypad;
 import com.ttlock.bl.sdk.entity.LockError;
 import com.ttlock.bl.sdk.util.FeatureValueUtil;
 
@@ -19,7 +18,6 @@ import java.util.HashMap;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import ttlock.demo.BaseActivity;
-import ttlock.demo.DateUtils;
 import ttlock.demo.MyApplication;
 import ttlock.demo.R;
 import ttlock.demo.databinding.ActivityEnableDisableSomeLockFuncionBinding;

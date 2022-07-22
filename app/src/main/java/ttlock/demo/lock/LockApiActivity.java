@@ -1,6 +1,6 @@
 package ttlock.demo.lock;
 
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
 
 import com.google.gson.reflect.TypeToken;
