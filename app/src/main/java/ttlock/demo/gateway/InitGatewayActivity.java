@@ -58,7 +58,7 @@ public class InitGatewayActivity extends BaseActivity {
 
     private void uploadGatewayDetail(DeviceInfo deviceInfo, int gatewayId) {
         ApiService apiService = RetrofitAPIManager.provideClientApi();
-        Call<String> call = apiService.uploadGatewayDetail(ApiService.CLIENT_ID, MyApplication.getmInstance().getAccountInfo().getAccess_token(), gatewayId, deviceInfo.getModelNum(), deviceInfo.hardwareRevision, deviceInfo.getFirmwareRevision(), binding.wifiName.getText().toString(), System.currentTimeMillis());
+        Call<String> call = apiService.uploadGatewayDetail(ApiService.CLIENT_ID, MyApplication.getmInstance().getAccountInfo().getAccess_token(), gatewayId, deviceInfo.getModelNum(), deviceInfo.hardwareRevision, "1.0.0", binding.wifiName.getText().toString(), System.currentTimeMillis());
         LogUtil.d("call server isSuccess api");
         call.enqueue(new Callback<String>() {
             @Override
