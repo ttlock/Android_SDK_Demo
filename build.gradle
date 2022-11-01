@@ -30,9 +30,9 @@ ext {
     // Sdk and tools
     // Support library and architecture components support minSdk 14 and above.
     minSdkVersion = 18
-    targetSdkVersion = 23
-    compileSdkVersion = 28
-    buildToolsVersion = '28.0.3'
+    targetSdkVersion = 31
+    compileSdkVersion = 31
+    buildToolsVersion = '31.0.0'
     // App dependencies
     supportLibraryVersion = '28.0.0'
     lifecycle_version = "1.1.1"

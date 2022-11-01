@@ -1,6 +1,8 @@
 package ttlock.demo;
 
 import androidx.databinding.DataBindingUtil;
+
+import android.Manifest;
 import android.os.Bundle;
 
 import ttlock.demo.databinding.ActivityMainBinding;
@@ -9,6 +11,7 @@ import ttlock.demo.firmwareupdate.FirmwareUpdateActivity;
 import ttlock.demo.iccard.ICCardActivity;
 import ttlock.demo.lock.LockApiActivity;
 import ttlock.demo.passcode.PasscodeActivity;
+import ttlock.demo.utils.AppUtil;
 import ttlock.demo.wireless_keyboard.WirelessKeyboardActivity;
 
 ;
@@ -21,6 +24,9 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
         initListener();
+        if (AppUtil.isAndroid12OrOver()) {
+            AppUtil.checkPermission(this, Manifest.permission.BLUETOOTH_CONNECT);
+        }
     }
 
     private void initListener(){

@@ -32,6 +32,7 @@ import ttlock.demo.lock.adapter.LockListAdapter;
 import ttlock.demo.lock.model.LockInitResultObj;
 import ttlock.demo.retrofit.ApiService;
 import ttlock.demo.retrofit.RetrofitAPIManager;
+import ttlock.demo.utils.AppUtil;
 
 public class ScanLockActivity extends BaseActivity implements LockListAdapter.onLockItemClick{
     ActivityScanLockBinding binding;
@@ -88,9 +89,16 @@ public class ScanLockActivity extends BaseActivity implements LockListAdapter.on
      */
     @TargetApi(Build.VERSION_CODES.M)
     private void startScan(){
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION_REQ_CODE);
-            return;
+        if (AppUtil.isAndroid12OrOver()) {//android 12 needs BLUETOOTH_SCAN permission
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_SCAN) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.BLUETOOTH_SCAN}, REQUEST_PERMISSION_REQ_CODE);
+                return;
+            }
+        } else {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION_REQ_CODE);
+                return;
+            }
         }
 
         getScanLockCallback();
