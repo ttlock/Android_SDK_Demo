@@ -38,7 +38,8 @@ Needed only if your app looks for Bluetooth devices.
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
     android:theme="@style/AppTheme">
-        <activity android:name=".AuthActivity">
+        <activity android:name=".AuthActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
