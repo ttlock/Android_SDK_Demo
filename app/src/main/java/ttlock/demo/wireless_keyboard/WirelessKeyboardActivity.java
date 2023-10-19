@@ -12,12 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.google.gson.reflect.TypeToken;
 import com.ttlock.bl.sdk.api.TTLockClient;
-import com.ttlock.bl.sdk.api.WirelessKeypadClient;
-import com.ttlock.bl.sdk.callback.InitKeypadCallback;
-import com.ttlock.bl.sdk.callback.ScanKeypadCallback;
 import com.ttlock.bl.sdk.constant.FeatureValue;
 import com.ttlock.bl.sdk.device.WirelessKeypad;
 import com.ttlock.bl.sdk.entity.LockError;
+import com.ttlock.bl.sdk.keypad.InitKeypadCallback;
+import com.ttlock.bl.sdk.keypad.ScanKeypadCallback;
+import com.ttlock.bl.sdk.keypad.WirelessKeypadClient;
+import com.ttlock.bl.sdk.keypad.model.InitKeypadResult;
+import com.ttlock.bl.sdk.keypad.model.KeypadError;
 import com.ttlock.bl.sdk.util.FeatureValueUtil;
 
 import java.util.HashMap;
@@ -96,15 +98,15 @@ public class WirelessKeyboardActivity extends BaseActivity implements onLockItem
          * String lockmac: the lock which need add wireless key pad Mac address
          * InitKeypadCallback callback :
          */
-        WirelessKeypadClient.getDefault().initializeKeypad(device, mCurrentLock.getLockMac(), new InitKeypadCallback() {
+        WirelessKeypadClient.getDefault().initializeKeypad(device, mCurrentLock.getLockMac(),  new InitKeypadCallback() {
             @Override
-            public void onInitKeypadSuccess(int specialValue) {
+            public void onInitKeypadSuccess(InitKeypadResult initKeypadResult) {
                 makeToast("=---add success-- upload to server to finish-");
-                uploadToServer(device,specialValue);
+                uploadToServer(device, initKeypadResult);
             }
 
             @Override
-            public void onFail(LockError error) {
+            public void onFail(KeypadError error) {
                 makeErrorToast(error);
             }
         });
@@ -124,8 +126,8 @@ public class WirelessKeyboardActivity extends BaseActivity implements onLockItem
             }
 
             @Override
-            public void onFail(LockError error) {
-                makeErrorToast(error);
+            public void onScanFailed(int error) {
+
             }
         });
     }
@@ -154,7 +156,7 @@ public class WirelessKeyboardActivity extends BaseActivity implements onLockItem
         }
     }
 
-    private void uploadToServer(WirelessKeypad device, int specialValue){
+    private void uploadToServer(WirelessKeypad device, InitKeypadResult initKeypadResult){
         ApiService apiService = RetrofitAPIManager.provideClientApi();
         HashMap<String,String> params = new HashMap<>(8);
         String wirelessKeypadAlias = "MyTestPad-" + DateUtils.getMillsTimeFormat(System.currentTimeMillis());
@@ -164,7 +166,7 @@ public class WirelessKeyboardActivity extends BaseActivity implements onLockItem
         params.put("wirelessKeyboardNumber",device.getName());
         params.put("wirelessKeyboardName",wirelessKeypadAlias);
         params.put("wirelessKeyboardMac",String.valueOf(device.getAddress()));
-        params.put("wirelessKeyboardSpecialValue",String.valueOf(specialValue));
+        params.put("wirelessKeypadFeatureValue", initKeypadResult.getFeatureValue());
         params.put("date",String.valueOf(System.currentTimeMillis()));
 
 

@@ -67,7 +67,7 @@ public class PassageModeActivity extends BaseActivity {
         modeData.setEndDate(18 * 60);//pm:  6:00
         modeData.setModeType(PassageModeType.Weekly);
         //if mode is Weekly,then the WeekDays is
-        int[] mCircleWeeksArray = {1,2,3,4,5};
+        int[] mCircleWeeksArray = {1,2,3,4};
         modeData.setRepeatWeekOrDays(GsonUtil.toJson(mCircleWeeksArray));
         showConnectLockToast();
         TTLockClient.getDefault().setPassageMode(modeData, mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new SetPassageModeCallback() {

@@ -116,6 +116,8 @@ public class InitGatewayActivity extends BaseActivity {
             //TODO:
             configureGatewayInfo.plugName = device.getAddress();
 
+            configureGatewayInfo.plugVersion = device.getGatewayType();
+
             GatewayClient.getDefault().initGateway(configureGatewayInfo, new InitGatewayCallback() {
                 @Override
                 public void onInitGatewaySuccess(DeviceInfo deviceInfo) {

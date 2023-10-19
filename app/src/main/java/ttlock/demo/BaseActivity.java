@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.ttlock.bl.sdk.api.TTLockClient;
 import com.ttlock.bl.sdk.entity.LockError;
+import com.ttlock.bl.sdk.keypad.model.KeypadError;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -48,6 +49,10 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void makeErrorToast(LockError error){
+        Toast.makeText(this,error.getDescription(),Toast.LENGTH_LONG).show();
+    }
+
+    public void makeErrorToast(KeypadError error){
         Toast.makeText(this,error.getDescription(),Toast.LENGTH_LONG).show();
     }
 

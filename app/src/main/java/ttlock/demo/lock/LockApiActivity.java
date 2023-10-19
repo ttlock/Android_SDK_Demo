@@ -243,6 +243,11 @@ public class LockApiActivity extends BaseActivity {
             }
 
             @Override
+            public void onGetDoorSensorStatusSuccess(int status) {
+
+            }
+
+            @Override
             public void onFail(LockError error) {
                 makeErrorToast(error);
             }

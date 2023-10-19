@@ -2,6 +2,7 @@ package ttlock.demo;
 
 import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.ttlock.bl.sdk.util.DigitUtil;

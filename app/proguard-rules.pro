@@ -128,9 +128,7 @@
 -dontwarn okio.**
 #
 
-#库的公共对外类和方法不被混淆
--keep public class com.ttlock.bl.sdk.** {*;}
--keep class com.ttlock.bl.sdk.api.PassageModeData {*;}
+
 
 #============================Gson Start==============================
 # Gson uses generic type information stored in a class file when working with fields. Proguard
@@ -151,3 +149,7 @@
 -keep class com.ttlock.bl.sdk.service.DfuService.**{*;}
 -keep class no.nordicsemi.android.dfu.** { *; }
 #===========DFU======
+#库的公共对外类和方法不被混淆
+-keep public class com.ttlock.bl.sdk.** {*;}
+-keep class com.ttlock.bl.sdk.api.PassageModeData {*;}
+
