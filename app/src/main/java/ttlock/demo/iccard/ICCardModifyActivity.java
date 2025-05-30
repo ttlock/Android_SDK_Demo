@@ -18,7 +18,7 @@ import retrofit2.Call;
 import ttlock.demo.BaseActivity;
 import ttlock.demo.MyApplication;
 
-import ttlock.demo.R;;
+import ttlock.demo.R;
 
 import ttlock.demo.databinding.ActivityIccardModifyBinding;
 import ttlock.demo.iccard.model.ICCardObj;

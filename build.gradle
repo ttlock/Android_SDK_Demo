@@ -3,18 +3,19 @@ buildscript {
     
     ext {
         agp_version = '7.2.2'
+        agp_version = '8.8.0'
     }
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools:r8:8.0.40'
+//        classpath 'com.android.tools:r8:8.0.40'
 
-        classpath "com.android.tools.build:gradle:4.1.2"
+        classpath "com.android.tools.build:gradle:$agp_version"
 
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+//        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -23,7 +24,7 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
@@ -35,9 +36,9 @@ ext {
     // Sdk and tools
     // Support library and architecture components support minSdk 14 and above.
     minSdkVersion = 18
-    targetSdkVersion = 31
-    compileSdkVersion = 31
-    buildToolsVersion = '31.0.0'
+    targetSdkVersion = 34
+    compileSdkVersion = 34
+    buildToolsVersion = '34.0.0'
     // App dependencies
     supportLibraryVersion = '28.0.0'
     lifecycle_version = "1.1.1"

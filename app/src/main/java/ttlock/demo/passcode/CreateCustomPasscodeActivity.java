@@ -10,7 +10,7 @@ import com.ttlock.bl.sdk.entity.LockError;
 
 import ttlock.demo.BaseActivity;
 
-import ttlock.demo.R;;
+import ttlock.demo.R;
 
 import ttlock.demo.databinding.ActivityCreateCustomPasscodeBinding;
 

@@ -18,7 +18,7 @@ import retrofit2.Call;
 import ttlock.demo.BaseActivity;
 import ttlock.demo.MyApplication;
 
-import ttlock.demo.R;;
+import ttlock.demo.R;
 
 import ttlock.demo.databinding.ActivityPasscodeBinding;
 import ttlock.demo.retrofit.ApiService;

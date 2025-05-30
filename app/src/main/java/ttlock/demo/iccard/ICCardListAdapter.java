@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 
-import ttlock.demo.R;;
+import ttlock.demo.R;
 
 import ttlock.demo.databinding.AttachmentListItemBinding;
 

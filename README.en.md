@@ -18,7 +18,7 @@ Android Studio
 #### Installation
 1. import lib in build.gradle:
 ```
-implementation 'com.ttlock:ttlock:3.2.6'
+implementation 'com.ttlock:ttlock:3.5.4'
 ```
 2. add permission in manifest:
 ```

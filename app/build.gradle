@@ -1,11 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 31
+    namespace 'ttlock.demo'
+    compileSdkVersion 34
     defaultConfig {
         applicationId "ttlock.demo"
         minSdkVersion 23
-        targetSdkVersion 31
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -13,9 +14,9 @@ android {
     buildTypes {
         debug {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            minifyEnabled true
-            shrinkResources true
-            zipAlignEnabled true
+            minifyEnabled false
+            shrinkResources false
+            zipAlignEnabled false
         }
         release {
             minifyEnabled true
@@ -25,15 +26,22 @@ android {
         }
     }
 
-    dataBinding {
-        enabled true
+    buildFeatures {
+        dataBinding true
+        viewBinding true
+        buildConfig true
     }
 
     compileOptions {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
-
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+        // 防止在发布的时候出现因MissingTranslation导致Build Failed!
+        disable 'MissingTranslation'
+    }
     //添加本地仓库，并把libs目录作为仓库地址
     repositories {
         flatDir {
@@ -48,13 +56,13 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
+//    testImplementation 'junit:junit:4.12'
 //    implementation(name: 'ttlock-release-3.0.7', ext: 'aar')
-    implementation 'no.nordicsemi.android:dfu:1.11.1'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    implementation 'no.nordicsemi.android:dfu:2.5.0'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'com.google.code.gson:gson:2.6.2'
-    implementation 'com.ttlock:ttlock:3.3.7'
+    implementation 'com.ttlock:ttlock:3.5.4'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 }

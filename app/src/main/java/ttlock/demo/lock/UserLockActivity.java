@@ -18,7 +18,7 @@ import retrofit2.Callback;
 import ttlock.demo.BaseActivity;
 import ttlock.demo.MyApplication;
 
-import ttlock.demo.R;;
+import ttlock.demo.R;
 
 import ttlock.demo.databinding.ActivityUserLockBinding;
 import ttlock.demo.lock.adapter.UserLockListAdapter;

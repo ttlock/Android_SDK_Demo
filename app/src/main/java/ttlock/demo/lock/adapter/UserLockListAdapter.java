@@ -13,7 +13,7 @@ import ttlock.demo.BaseActivity;
 import ttlock.demo.MainActivity;
 import ttlock.demo.MyApplication;
 
-import ttlock.demo.R;;
+import ttlock.demo.R;
 
 import ttlock.demo.databinding.UserLockListItemBinding;
 import ttlock.demo.model.LockObj;

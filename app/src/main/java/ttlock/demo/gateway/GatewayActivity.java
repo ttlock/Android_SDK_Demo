@@ -18,7 +18,7 @@ import com.ttlock.bl.sdk.api.ExtendedBluetoothDevice;
 
 import ttlock.demo.BaseActivity;
 
-import ttlock.demo.R;;
+import ttlock.demo.R;
 import ttlock.demo.databinding.ActivityGatewayBinding;
 import ttlock.demo.gateway.adapter.GatewayListAdapter;
 
