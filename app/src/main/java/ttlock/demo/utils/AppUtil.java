@@ -28,6 +28,19 @@ public class AppUtil {
         return version;
     }
 
+    public static boolean checkPermissions(Activity activity, String[] permissions) {
+        if (permissions == null || permissions.length == 0) {
+            return false;
+        }
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(activity, permission) != PackageManager.PERMISSION_GRANTED) {
+                activity.requestPermissions(permissions, REQUEST_PERMISSION_REQ_CODE);
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static boolean checkPermission(Activity activity, String permission) {
         if (ContextCompat.checkSelfPermission(activity, permission) != PackageManager.PERMISSION_GRANTED) {
             activity.requestPermissions(new String[]{permission}, REQUEST_PERMISSION_REQ_CODE);

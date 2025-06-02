@@ -25,7 +25,7 @@ public class MainActivity extends BaseActivity {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
         initListener();
         if (AppUtil.isAndroid12OrOver()) {
-            AppUtil.checkPermission(this, Manifest.permission.BLUETOOTH_CONNECT);
+            AppUtil. checkPermission(this, Manifest.permission.BLUETOOTH_CONNECT);
         }
     }
 
