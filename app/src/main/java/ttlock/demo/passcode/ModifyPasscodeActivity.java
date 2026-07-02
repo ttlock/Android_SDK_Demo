@@ -91,7 +91,7 @@ public class ModifyPasscodeActivity extends BaseActivity {
                     break;
         }
         showConnectLockToast();
-        TTLockClient.getDefault().modifyPasscode(originalPasscode, newPasscode, newStartDate, newEndDate, mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new ModifyPasscodeCallback() {
+        TTLockClient.getDefault().modifyPasscode(originalPasscode, newPasscode, newStartDate, newEndDate, mCurrentLock.getLockData(), new ModifyPasscodeCallback() {
             @Override
             public void onModifyPasscodeSuccess() {
                 makeToast("passcode is modified success");

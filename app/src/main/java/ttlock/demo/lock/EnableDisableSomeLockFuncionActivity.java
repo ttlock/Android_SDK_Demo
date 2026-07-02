@@ -87,7 +87,7 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
             return;
         }
 
-        TTLockClient.getDefault().getMuteModeState( mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new GetLockMuteModeStateCallback() {
+        TTLockClient.getDefault().getMuteModeState( mCurrentLock.getLockData(), new GetLockMuteModeStateCallback() {
             @Override
             public void onGetMuteModeStateSuccess(boolean enabled) {
 
@@ -110,7 +110,7 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
             return;
         }
 
-        TTLockClient.getDefault().getRemoteUnlockSwitchState( mCurrentLock.getLockData(), mCurrentLock.getLockMac(),new GetRemoteUnlockStateCallback() {
+        TTLockClient.getDefault().getRemoteUnlockSwitchState( mCurrentLock.getLockData(),new GetRemoteUnlockStateCallback() {
             @Override
             public void onGetRemoteUnlockSwitchStateSuccess(boolean enabled) {
 
@@ -128,7 +128,7 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
      * @param enable true means the lock will be mute,false means lock volume > 0.
      */
     private void setMuteMode(boolean enable){
-        TTLockClient.getDefault().setMuteMode(enable,  mCurrentLock.getLockData(), mCurrentLock.getLockMac(),new SetLockMuteModeCallback() {
+        TTLockClient.getDefault().setMuteMode(enable,  mCurrentLock.getLockData(),new SetLockMuteModeCallback() {
             @Override
             public void onSetMuteModeSuccess(boolean enabled) {
                 makeToast("--set lock mute state Success-is mute-" + enable);
@@ -146,7 +146,7 @@ public class EnableDisableSomeLockFuncionActivity extends BaseActivity {
      * @param enable the remote unlock feature on/off  true means on,false means off.
      */
     private void setRemoteUnlockFunction(final boolean enable){
-        TTLockClient.getDefault().setRemoteUnlockSwitchState(enable, mCurrentLock.getLockData(), mCurrentLock.getLockMac(),new SetRemoteUnlockSwitchCallback() {
+        TTLockClient.getDefault().setRemoteUnlockSwitchState(enable, mCurrentLock.getLockData(),new SetRemoteUnlockSwitchCallback() {
             @Override
             public void onSetRemoteUnlockSwitchSuccess(String lockData) {
                 makeToast("--remote unlock switch has been changed success--");

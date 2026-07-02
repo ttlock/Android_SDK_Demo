@@ -73,7 +73,7 @@ public class LockApiActivity extends BaseActivity {
     private void resetEKey(){
         ensureBluetoothIsEnabled();
         showConnectLockToast();
-        TTLockClient.getDefault().resetEkey(mCurrentLock.getLockData(),mCurrentLock.getLockMac(), new ResetKeyCallback() {
+        TTLockClient.getDefault().resetEkey(mCurrentLock.getLockData(), new ResetKeyCallback() {
             @Override
             public void onResetKeySuccess(String lockData) {
                 updateLockData(lockData);
@@ -146,7 +146,7 @@ public class LockApiActivity extends BaseActivity {
     private void resetLock(){
         ensureBluetoothIsEnabled();
         showConnectLockToast();
-        TTLockClient.getDefault().resetLock(mCurrentLock.getLockData(), mCurrentLock.getLockMac(),new ResetLockCallback() {
+        TTLockClient.getDefault().resetLock(mCurrentLock.getLockData(),new ResetLockCallback() {
             @Override
             public void onResetLockSuccess() {
                 makeToast("-lock is reset and now upload to  server -");
@@ -186,7 +186,7 @@ public class LockApiActivity extends BaseActivity {
      */
     private void getOperationLog(){
         showConnectLockToast();
-        TTLockClient.getDefault().getOperationLog(LogType.NEW, mCurrentLock.getLockData(),mCurrentLock.getLockMac(), new GetOperationLogCallback() {
+        TTLockClient.getDefault().getOperationLog(LogType.NEW, mCurrentLock.getLockData(), new GetOperationLogCallback() {
             @Override
             public void onGetLogSuccess(String log) {
                 makeToast("Get log success!");
@@ -201,7 +201,7 @@ public class LockApiActivity extends BaseActivity {
 
     private void getLockBatteryLevel(){
         showConnectLockToast();
-        TTLockClient.getDefault().getBatteryLevel(mCurrentLock.getLockData(),mCurrentLock.getLockMac(), new GetBatteryLevelCallback() {
+        TTLockClient.getDefault().getBatteryLevel(mCurrentLock.getLockData(), new GetBatteryLevelCallback() {
             @Override
             public void onGetBatteryLevelSuccess(int electricQuantity) {
                 makeToast("lock battery is " + electricQuantity + "%");
@@ -216,7 +216,7 @@ public class LockApiActivity extends BaseActivity {
 
     private void getLockSystemInfo(){
         showConnectLockToast();
-        TTLockClient.getDefault().getLockSystemInfo(mCurrentLock.getLockData(), mCurrentLock.getLockMac(),new GetLockSystemInfoCallback() {
+        TTLockClient.getDefault().getLockSystemInfo(mCurrentLock.getLockData(),new GetLockSystemInfoCallback() {
             @Override
             public void onGetLockSystemInfoSuccess(DeviceInfo info) {
                 makeToast(info.toString());
@@ -236,7 +236,7 @@ public class LockApiActivity extends BaseActivity {
      */
     private void getLockStatus(){
         showConnectLockToast();
-        TTLockClient.getDefault().getLockStatus(mCurrentLock.getLockData(),mCurrentLock.getLockMac(), new GetLockStatusCallback() {
+        TTLockClient.getDefault().getLockStatus(mCurrentLock.getLockData(), new GetLockStatusCallback() {
             @Override
             public void onGetLockStatusSuccess(int status) {
                 makeToast("lock status is now " + status);
@@ -263,7 +263,7 @@ public class LockApiActivity extends BaseActivity {
             makeToast("this lock dose not support automatic locking");
         }
         showConnectLockToast();
-        TTLockClient.getDefault().setAutomaticLockingPeriod(5, mCurrentLock.getLockData(), mCurrentLock.getLockMac(),new SetAutoLockingPeriodCallback() {
+        TTLockClient.getDefault().setAutomaticLockingPeriod(5, mCurrentLock.getLockData(),new SetAutoLockingPeriodCallback() {
             @Override
             public void onSetAutoLockingPeriodSuccess() {
                 makeToast("set automatic locking period success");

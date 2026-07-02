@@ -71,7 +71,7 @@ public class ICCardActivity extends BaseActivity {
         }
 
 
-        TTLockClient.getDefault().addICCard(addStartDate, addEndDate, mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new AddICCardCallback() {
+        TTLockClient.getDefault().addICCard(addStartDate, addEndDate, mCurrentLock.getLockData(), new AddICCardCallback() {
             @Override
             public void onEnterAddMode() {
                 makeToast("-you can put ic card on lock now-");
@@ -125,7 +125,7 @@ public class ICCardActivity extends BaseActivity {
 
     private void getAllCards(){
         showConnectLockToast();
-        TTLockClient.getDefault().getAllValidICCards(mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new GetAllValidICCardCallback() {
+        TTLockClient.getDefault().getAllValidICCards(mCurrentLock.getLockData(), new GetAllValidICCardCallback() {
             @Override
             public void onGetAllValidICCardSuccess(String cardDataStr) {
                 makeToast("-all ic cards info " + cardDataStr);
@@ -140,7 +140,7 @@ public class ICCardActivity extends BaseActivity {
 
     private void clearAllCards(){
         showConnectLockToast();
-        TTLockClient.getDefault().clearAllICCard(mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new ClearAllICCardCallback() {
+        TTLockClient.getDefault().clearAllICCard(mCurrentLock.getLockData(), new ClearAllICCardCallback() {
             @Override
             public void onClearAllICCardSuccess() {
 //                makeToast("--all ic cards have been cleared success-");

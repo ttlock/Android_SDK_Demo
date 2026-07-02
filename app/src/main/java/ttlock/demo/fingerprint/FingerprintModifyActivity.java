@@ -53,7 +53,7 @@ public class FingerprintModifyActivity extends BaseActivity {
         showConnectLockToast();
         long newStartDate = System.currentTimeMillis();
         long newEndDate = newStartDate + 5 * 60 * 1000;
-        TTLockClient.getDefault().modifyFingerprintValidityPeriod(newStartDate, newEndDate, mSelectFingerprintObj.getFingerprintNumber(), mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new ModifyFingerprintPeriodCallback() {
+        TTLockClient.getDefault().modifyFingerprintValidityPeriod(newStartDate, newEndDate, mSelectFingerprintObj.getFingerprintNumber(), mCurrentLock.getLockData(), new ModifyFingerprintPeriodCallback() {
 
             @Override
             public void onModifyPeriodSuccess() {
@@ -71,7 +71,7 @@ public class FingerprintModifyActivity extends BaseActivity {
 
     private void deleteFingerprint(){
         showConnectLockToast();
-        TTLockClient.getDefault().deleteFingerprint(mSelectFingerprintObj.getFingerprintNumber(),  mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new DeleteFingerprintCallback() {
+        TTLockClient.getDefault().deleteFingerprint(mSelectFingerprintObj.getFingerprintNumber(),  mCurrentLock.getLockData(), new DeleteFingerprintCallback() {
             @Override
             public void onDeleteFingerprintSuccess() {
                 makeToast("--fingerprint is deleted by lock-");

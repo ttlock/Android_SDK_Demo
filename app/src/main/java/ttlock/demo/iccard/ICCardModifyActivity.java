@@ -54,7 +54,7 @@ public class ICCardModifyActivity extends BaseActivity {
         showConnectLockToast();
         long newStartDate = System.currentTimeMillis();
         long newEndDate = newStartDate + 5 * 60 * 1000;
-        TTLockClient.getDefault().modifyICCardValidityPeriod(newStartDate, newEndDate, mSelectCardObj.getCardNumber(), mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new ModifyICCardPeriodCallback() {
+        TTLockClient.getDefault().modifyICCardValidityPeriod(newStartDate, newEndDate, mSelectCardObj.getCardNumber(), mCurrentLock.getLockData(), new ModifyICCardPeriodCallback() {
             @Override
             public void onModifyICCardPeriodSuccess() {
 //                makeToast("-lock-modify success--");
@@ -72,7 +72,7 @@ public class ICCardModifyActivity extends BaseActivity {
 
     private void deleteCard(){
         showConnectLockToast();
-        TTLockClient.getDefault().deleteICCard(mSelectCardObj.getCardNumber(), mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new DeleteICCardCallback() {
+        TTLockClient.getDefault().deleteICCard(mSelectCardObj.getCardNumber(), mCurrentLock.getLockData(), new DeleteICCardCallback() {
             @Override
             public void onDeleteICCardSuccess() {
                 makeToast("--IC card is deleted-");

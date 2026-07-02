@@ -71,7 +71,7 @@ public class FingerprintActivity extends BaseActivity {
         }
 
 
-        TTLockClient.getDefault().addFingerprint(addStartDate, addEndDate, mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new AddFingerprintCallback() {
+        TTLockClient.getDefault().addFingerprint(addStartDate, addEndDate, mCurrentLock.getLockData(), new AddFingerprintCallback() {
 
             @Override
             public void onEnterAddMode(int totalCount) {
@@ -130,7 +130,7 @@ public class FingerprintActivity extends BaseActivity {
 
     private void getAllFingerprints(){
         showConnectLockToast();
-        TTLockClient.getDefault().getAllValidFingerprints( mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new GetAllValidFingerprintCallback() {
+        TTLockClient.getDefault().getAllValidFingerprints( mCurrentLock.getLockData(), new GetAllValidFingerprintCallback() {
             @Override
             public void onGetAllFingerprintsSuccess(String fingerprintStr) {
                 makeToast("-get-all fingerprints-success-" + fingerprintStr);
@@ -145,7 +145,7 @@ public class FingerprintActivity extends BaseActivity {
 
     private void clearAllFingerprints(){
         showConnectLockToast();
-        TTLockClient.getDefault().clearAllFingerprints( mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new ClearAllFingerprintCallback() {
+        TTLockClient.getDefault().clearAllFingerprints( mCurrentLock.getLockData(), new ClearAllFingerprintCallback() {
 
             @Override
             public void onClearAllFingerprintSuccess() {

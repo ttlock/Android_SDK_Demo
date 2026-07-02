@@ -50,7 +50,7 @@ public class AdminPasscodeActivity extends BaseActivity {
             makeToast("--this lock does not support this operation--");
             return;
         }
-        TTLockClient.getDefault().getAdminPasscode(mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new GetAdminPasscodeCallback() {
+        TTLockClient.getDefault().getAdminPasscode(mCurrentLock.getLockData(), new GetAdminPasscodeCallback() {
             @Override
             public void onGetAdminPasscodeSuccess(String passcode) {
                 makeToast("admin passcode get success=");
@@ -72,7 +72,7 @@ public class AdminPasscodeActivity extends BaseActivity {
             makeToast("-please input new admin passcode-");
             return;
         }
-        TTLockClient.getDefault().modifyAdminPasscode(newAdminPasscode, mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new ModifyAdminPasscodeCallback() {
+        TTLockClient.getDefault().modifyAdminPasscode(newAdminPasscode, mCurrentLock.getLockData(), new ModifyAdminPasscodeCallback() {
             @Override
             public void onModifyAdminPasscodeSuccess(String passcode) {
                 //this must be done after callback success.

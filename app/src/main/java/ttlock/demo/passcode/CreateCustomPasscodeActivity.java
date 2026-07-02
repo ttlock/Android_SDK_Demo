@@ -48,7 +48,7 @@ public class CreateCustomPasscodeActivity extends BaseActivity {
             return;
         }
 
-        TTLockClient.getDefault().createCustomPasscode(passcode, startDate, endDate, mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new CreateCustomPasscodeCallback() {
+        TTLockClient.getDefault().createCustomPasscode(passcode, startDate, endDate, mCurrentLock.getLockData(), new CreateCustomPasscodeCallback() {
             @Override
             public void onCreateCustomPasscodeSuccess(String passcode) {
                 makeToast(" passcode is created : " + passcode + " you can try it on lock now");

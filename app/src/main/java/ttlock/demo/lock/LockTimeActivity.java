@@ -40,7 +40,7 @@ public class LockTimeActivity extends BaseActivity {
             TTLockClient.getDefault().requestBleEnable(this);
         }
         makeToast("is query time of lock..");
-        TTLockClient.getDefault().getLockTime(mCurrentLock.getLockData(),mCurrentLock.getLockMac(), new GetLockTimeCallback() {
+        TTLockClient.getDefault().getLockTime(mCurrentLock.getLockData(), new GetLockTimeCallback() {
             @Override
             public void onGetLockTimeSuccess(long lockTimestamp) {
                 binding.tvLockTime.setText(getResources().getString(R.string.lock_time_is) + getDateFormat(lockTimestamp));
@@ -68,7 +68,7 @@ public class LockTimeActivity extends BaseActivity {
          *  the time you want to correct lock time ,should be get from your server.
          */
         long currentTimeStamp = System.currentTimeMillis();
-        TTLockClient.getDefault().setLockTime(currentTimeStamp, mCurrentLock.getLockData(),mCurrentLock.getLockMac(), new SetLockTimeCallback() {
+        TTLockClient.getDefault().setLockTime(currentTimeStamp, mCurrentLock.getLockData(), new SetLockTimeCallback() {
            @Override
            public void onSetTimeSuccess() {
                makeToast("lock time is corrected");

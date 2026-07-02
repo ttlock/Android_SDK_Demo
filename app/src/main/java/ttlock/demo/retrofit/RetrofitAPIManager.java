@@ -13,8 +13,6 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Converter;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import ttlock.demo.retrofit.factory.GsonDConverterFactory;
 
 /**
  * Created by TTLock on 2018/9/5.

@@ -85,7 +85,7 @@ public class UnlockActivity extends BaseActivity {
 //        }
         ensureBluetoothIsEnabled();
         showConnectLockToast();
-        TTLockClient.getDefault().controlLock(ControlAction.UNLOCK, mCurrentLock.getLockData(), mCurrentLock.getLockMac(),new ControlLockCallback() {
+        TTLockClient.getDefault().controlLock(ControlAction.UNLOCK, mCurrentLock.getLockData(),new ControlLockCallback() {
             @Override
             public void onControlLockSuccess(ControlLockResult controlLockResult) {
                 Toast.makeText(UnlockActivity.this,"lock is unlock  success!",Toast.LENGTH_LONG).show();
@@ -108,7 +108,7 @@ public class UnlockActivity extends BaseActivity {
 //        }
         ensureBluetoothIsEnabled();
         showConnectLockToast();
-        TTLockClient.getDefault().controlLock(ControlAction.LOCK, mCurrentLock.getLockData(), mCurrentLock.getLockMac(),new ControlLockCallback() {
+        TTLockClient.getDefault().controlLock(ControlAction.LOCK, mCurrentLock.getLockData(),new ControlLockCallback() {
             @Override
             public void onControlLockSuccess(ControlLockResult controlLockResult) {
                 Toast.makeText(UnlockActivity.this,"lock is locked!",Toast.LENGTH_LONG).show();

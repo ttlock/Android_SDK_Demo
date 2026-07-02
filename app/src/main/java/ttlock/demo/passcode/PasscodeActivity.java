@@ -49,7 +49,7 @@ public class PasscodeActivity extends BaseActivity {
     private void deletePasscode(){
         ensureBluetoothIsEnabled();
         showConnectLockToast();
-        TTLockClient.getDefault().deletePasscode(passcode, mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new DeletePasscodeCallback() {
+        TTLockClient.getDefault().deletePasscode(passcode, mCurrentLock.getLockData(), new DeletePasscodeCallback() {
             @Override
             public void onDeletePasscodeSuccess() {
                 makeToast(" passcode is deleted");
@@ -67,7 +67,7 @@ public class PasscodeActivity extends BaseActivity {
      */
     private void getAllValidPasscodes(){
         showConnectLockToast();
-        TTLockClient.getDefault().getAllValidPasscodes(mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new GetAllValidPasscodeCallback() {
+        TTLockClient.getDefault().getAllValidPasscodes(mCurrentLock.getLockData(), new GetAllValidPasscodeCallback() {
             @Override
             public void onGetAllValidPasscodeSuccess(String passcodeStr) {
                 makeToast("- Success  passcodes are " + passcodeStr);
@@ -87,7 +87,7 @@ public class PasscodeActivity extends BaseActivity {
      */
     private void resetPasscodes(){
         showConnectLockToast();
-        TTLockClient.getDefault().resetPasscode(mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new ResetPasscodeCallback() {
+        TTLockClient.getDefault().resetPasscode(mCurrentLock.getLockData(), new ResetPasscodeCallback() {
             @Override
             public void onResetPasscodeSuccess(String lockData) {
                 //this must be done after callback success,or the lock passcode would be work well.

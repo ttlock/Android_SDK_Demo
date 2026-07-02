@@ -42,7 +42,7 @@ public class PassageModeActivity extends BaseActivity {
 
     private void getPassageModeSettingInLock(){
         showConnectLockToast();
-        TTLockClient.getDefault().getPassageMode(mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new GetPassageModeCallback() {
+        TTLockClient.getDefault().getPassageMode(mCurrentLock.getLockData(), new GetPassageModeCallback() {
             @Override
             public void onGetPassageModeSuccess(String passageModeData) {
                 makeToast("--get--success--" + passageModeData);
@@ -70,7 +70,7 @@ public class PassageModeActivity extends BaseActivity {
         int[] mCircleWeeksArray = {1,2,3,4};
         modeData.setRepeatWeekOrDays(GsonUtil.toJson(mCircleWeeksArray));
         showConnectLockToast();
-        TTLockClient.getDefault().setPassageMode(modeData, mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new SetPassageModeCallback() {
+        TTLockClient.getDefault().setPassageMode(modeData, mCurrentLock.getLockData(), new SetPassageModeCallback() {
             @Override
             public void onSetPassageModeSuccess() {
                 makeToast("-set passage mode success-");
@@ -92,7 +92,7 @@ public class PassageModeActivity extends BaseActivity {
         int[] mCircleWeeksArray = {2,3,4,5,6};
         modeData.setRepeatWeekOrDays(GsonUtil.toJson(mCircleWeeksArray));
         showConnectLockToast();
-        TTLockClient.getDefault().deletePassageMode(modeData, mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new DeletePassageModeCallback() {
+        TTLockClient.getDefault().deletePassageMode(modeData, mCurrentLock.getLockData(), new DeletePassageModeCallback() {
             @Override
             public void onDeletePassageModeSuccess() {
                 makeToast("-delete passage mode success-");
@@ -107,7 +107,7 @@ public class PassageModeActivity extends BaseActivity {
 
     private void clearAllPassageModeInLock(){
         showConnectLockToast();
-        TTLockClient.getDefault().clearPassageMode(mCurrentLock.getLockData(), mCurrentLock.getLockMac(), new ClearPassageModeCallback() {
+        TTLockClient.getDefault().clearPassageMode(mCurrentLock.getLockData(), new ClearPassageModeCallback() {
             @Override
             public void onClearPassageModeSuccess() {
                 makeToast("--all passage mode are cleared success-");
